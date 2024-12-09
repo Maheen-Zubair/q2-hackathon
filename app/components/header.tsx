@@ -220,7 +220,7 @@ export default function Header() {
       </select>
       <Link href={"/"} className="hover:text-[#FB2E86]">Pages</Link>
       <Link href={"/grid"} className="hover:text-[#FB2E86]">Products</Link>
-      <Link href={"/blog"}className="hover:text-[#FB2E86]">Blog</Link>
+      <Link href={"/"}className="hover:text-[#FB2E86]">Blog</Link>
       <Link href={"/"} className="hover:text-[#FB2E86]">Shop</Link>
       <Link href={"/contact"}className="hover:text-[#FB2E86]">Contact</Link>
     </div>
