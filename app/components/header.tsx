@@ -143,6 +143,7 @@ export default function Header() {
               </svg>
 
               {/* ---------------cart svg-------------- */}
+              <Link href={"/cart"}>
               <svg
                 width="24"
                 height="24"
@@ -170,6 +171,7 @@ export default function Header() {
                   stroke-width="0.2"
                 />
               </svg>
+              </Link>
             </div>
           </div>
         </div>
