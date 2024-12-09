@@ -8,14 +8,7 @@ import Section6 from "./section6/page";
 import Section7 from "./section7/page";
 import Section8 from "./section8/page";
 import Section9 from "./section9/page";
-import Contact from "./contact/page";
-import Login from "./login/page";
-import ShopList from "./shoplist/page";
-import Grid from "./grid/page";
 import Section from "./section/page";
-import Blog from "./blog/page";
-// import Blog from "./blog/page";
-import Cart from "./shoppingCart/page";
 export default function Home() {
   return (
     <div>
