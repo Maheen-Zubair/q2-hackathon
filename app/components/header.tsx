@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import logo from "../../public/Hekto.png";
+import Link from "next/link";
 
 export default function Header() {
   return (
@@ -95,6 +96,8 @@ export default function Header() {
                 AUD
               </option>
             </select>
+            <Link href={"/login"}>
+
             <div className="loginIcon flex justify-center items-center ">
               <div className="text font-semibold   text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-baseleading-none">
                 Login
@@ -117,6 +120,8 @@ export default function Header() {
                 />
               </svg>
             </div>
+            </Link>
+
             <div className="wishlistIcon flex justify-center items-center s:gap-1">
               <div className="text font-semibold   text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-base leading-none">
                 Wishlist
@@ -172,70 +177,79 @@ export default function Header() {
 
       {/* ------------header 2------------- */}
       
-      <div className=" mainConatiner h-[38px]  flex items-center justify-center  bg-white  lg:gap-20 pb-[10px] pt-[35px] md:pb-[20px] md:pt-[50px]">
-        <div className=" subContainer flex  xxmd:w-[70%] w-[90%] items-center justify-between">
-          <div className=" logo font-bold flex   text-md leading-[24px] items-center   tracking-[3%] lg:text-[24px] ">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              className="size-6 mr-1 hilg:hidden"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
-            <Image src={logo} alt="logo" className=" w-[70px] h-[20px]  sl:w-[98px] sl:h-[30px] "  />
-          </div>
+      <div className="mainContainer overflow-y-hidden h-[38px] flex items-center justify-center bg-white pb-[10px] pt-[35px] md:pb-[20px] md:pt-[50px]">
+  <div className="subContainer flex  lg:w-[96%] big:w-[90%] xxmd:w-[70%] items-center justify-between">
+    {/* Logo */}
+    <div className="logo font-bold flex text-md leading-[24px] items-center tracking-[3%] lg:text-[24px]">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth="1.5"
+        stroke="currentColor"
+        className="size-6 mr-1 hilg:hidden"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+        />
+      </svg>
+      <Image
+        src={logo}
+        alt="logo"
+        className="w-[70px] h-[20px] sl:w-[98px] sl:h-[30px]"
+      />
+    </div>
 
-          <div className=" options  xs:hidden hilg:flex elg:w-[367px] w-[280px] font-md eelg:w-[300px] h-[24px]  gap-[35px] elg:gap-[40px] flex font-semibold items-center">
-          <select
-              name="languages"
-              id="languages"
-              className="bg-transparent hover:text-[#FB2E86]  text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-base font-semibold"
-            >
-              <option value="eng" className="bg-[#FB2E86] ">
-                English
-              </option>
-              <option value="urd" className="bg-[#FB2E86]  ">
-                Urdu
-              </option>
-            
-            </select>            <h1 className="">Pages</h1>
-            <h1 className="hover:text-[#FB2E86]">Products</h1>
-            <h1 className="hover:text-[#FB2E86]">Blog</h1>
-            <h1 className="hover:text-[#FB2E86]">Shop</h1>
-            <h1 className="hover:text-[#FB2E86]">Contact</h1>
-          </div>
+    {/* Options */}
+    <div className="options hidden lg:flex elg:flex text-[#0D0E43] elg:w-auto  font-md h-[24px] gap-4 clg:gap-[20px] font-semibold items-center">
+      <select
+        name="languages"
+        id="languages"
+        className="bg-transparent hover:text-[#FB2E86] text-[10px] md:text-[12px] lg:text-[14px] clg:text-base font-semibold border border-gray-300 rounded-sm px-2 focus:outline-none"
+      >
+        <option value="eng" className="bg-[#FB2E86] text-white">
+          Home
+        </option>
+        <option value="urd" className="bg-[#FB2E86] text-white">
+          Urdu
+        </option>
+      </select>
+      <Link href={"/"} className="hover:text-[#FB2E86]">Pages</Link>
+      <Link href={"/grid"} className="hover:text-[#FB2E86]">Products</Link>
+      <Link href={"/blog"}className="hover:text-[#FB2E86]">Blog</Link>
+      <Link href={"/shoplist"} className="hover:text-[#FB2E86]">Shop</Link>
+      <Link href={"/contact"}className="hover:text-[#FB2E86]">Contact</Link>
+    </div>
 
-          <div className=" search flex ml-10   s:ml-44 elg:ml-56 ">
-            <input
-              type="text"
-              className="  h-6 w-20 sm:h-9 pl-2 xxmd:w-24 xmd:w-28 md:w-64 s:w-40 text-gray-800 border-[#E7E6EF] border-2 border-r-0 placeholder:text-xs  "
-            />
-            <button className=" h-6 w-6 bg-[#FB2E86] flex sm:h-9 sm:w-9 items-center justify-center ">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                className=" size-4  s:size-6 invert"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </div>
+    {/* Search */}
+    <div className="search flex ml-10 s:ml-44 elg:ml-56">
+      <input
+        type="text"
+        placeholder="Search..."
+        className="h-6 w-20 sm:h-9 pl-2 xxmd:w-24 xmd:w-28 md:w-64 s:w-40 text-gray-800 border-[#E7E6EF] border-2 border-r-0 placeholder:text-xs focus:ring-2 focus:ring-[#FB2E86] focus:outline-none"
+      />
+      <button className="h-6 w-6 bg-[#FB2E86] flex sm:h-9 sm:w-9 items-center justify-center">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth="1.5"
+          stroke="currentColor"
+          className="size-4 s:size-6 invert"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
     </div>
   );
 }

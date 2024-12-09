@@ -22,12 +22,15 @@ const config: Config = {
         'xlg':'1048px',
         'xmd':'500px',
         's':'670px',
+        'llm': '778px', 
         'sl':'855px',
         'clg':'1115px',
         "elg":'1448px',
+        "big":'1540px',
         "eelg":'1299px',
         "hilg":'1299px',
-        'clxs': '365px', 
+        'clxs': '365px',
+
 
 
         },

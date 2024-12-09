@@ -6,6 +6,7 @@ import slide from "../../public/Group 141.png";
 import image2 from "../../public/image 1.png";
 import image3 from "../../public/image 1169.png";
 import image4 from "../../public/image 3.png";
+import divSlide from "../../public/Group 169.png"
 
 export default function Section2() {
   return (
@@ -15,7 +16,7 @@ export default function Section2() {
           Featured Products
         </h1>
         <div className="sub grid eelg:grid-cols-4 gap-y-9 md:grid-cols-3 sm:grid-cols-2 sm:gap-[30px]  justify-center items-center  w-[60p%] lg:w-[75%] ">
-          <div className="part1 group  w-[230px] h-[361px] bg-white flex flex-col   shadow-md hover:shadow-xl transition-shadow duration-300 ">
+          <div className="part1 group  w-[230px] h-[361px] bg-white flex flex-col  shadow-md hover:shadow-xl transition-shadow duration-300 ">
             <div className="imag relative h-[65%] bg-[#F6F7FB] flex justify-center items-center ">
               <Image src={image1} alt="image" />
               <button className=" hidden group-hover:flex absolute justify-center items-center hover:shadow-black hover:shadow-sm w-[94px] h-[29px] top-[198px] left-[65px] text-white rounded-[2px] text-[12px] font-thin  bg-[#08D15F]">
@@ -113,7 +114,7 @@ export default function Section2() {
             </div>
           </div>
 
-          <div className="part1  shadow-md hover:shadow-xl transition-shadow duration-300   group w-[230px] h-[361px] bg-white flex flex-col ">
+          <div className="part2  shadow-md hover:shadow-xl transition-shadow duration-300   group w-[230px] h-[361px] bg-white flex flex-col ">
             <div className="imag relative h-[65%] bg-[#F6F7FB] flex justify-center items-center ">
               <Image src={image2} alt="image" />
               <button className=" hidden group-hover:flex absolute justify-center items-center hover:shadow-black hover:shadow-sm w-[94px] h-[29px] top-[198px] left-[65px] text-white rounded-[2px] text-[12px] font-thin  bg-[#08D15F]">
@@ -211,7 +212,7 @@ export default function Section2() {
             </div>
           </div>
 
-          <div className="part1 group   shadow-md hover:shadow-xl transition-shadow duration-300  w-[230px] h-[361px] bg-white flex flex-col ">
+          <div className="part3 group   shadow-md hover:shadow-xl transition-shadow duration-300  w-[230px] h-[361px] bg-white flex flex-col ">
             <div className="imag relative h-[65%] bg-[#F6F7FB] flex justify-center items-center ">
               <Image src={image3} alt="image3" />
               <button className=" hidden group-hover:flex absolute justify-center items-center hover:shadow-black hover:shadow-sm w-[94px] h-[29px] top-[198px] left-[65px] text-white rounded-[2px] text-[12px] font-thin  bg-[#08D15F]">
@@ -309,7 +310,7 @@ export default function Section2() {
             </div>
           </div>
 
-          <div className="part1 group w-[230px]   shadow-md hover:shadow-xl transition-shadow duration-300   h-[361px] bg-white flex flex-col ">
+          <div className="part4 group w-[230px]   shadow-md hover:shadow-xl transition-shadow duration-300   h-[361px] bg-white flex flex-col ">
             <div className="imag relative h-[65%] bg-[#F6F7FB] flex justify-center items-center ">
               <Image src={image4} alt="image4" />
               <button className=" hidden group-hover:flex absolute justify-center items-center hover:shadow-black hover:shadow-sm w-[94px] h-[29px] top-[198px] left-[65px] text-white rounded-[2px] text-[12px] font-thin  bg-[#08D15F]">
@@ -407,6 +408,8 @@ export default function Section2() {
             </div>
           </div>
         </div>
+        <Image src={divSlide} alt="slide"/>
+
       </div>
     </div>
   );
