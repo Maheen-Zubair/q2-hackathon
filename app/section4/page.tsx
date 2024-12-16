@@ -23,16 +23,16 @@ export default function Section4() {
           Leatest Products
         </h1>
         <div className="options justify-center text-[10px] lg:text-[15px] hilg:flex font-md h-[24px] gap-[35px] elg:gap-[40px] flex font-semibold items-center">
-          <h1 className="hover:text-[#FB2E86] text-[10px] lg:text-[15px] font-[Lato]   leading-[21.6px] font-normal hover:underline">
+          <h1 className="hover:text-[#FB2E86] text-[10px] lg:text-[15px] font-[Lato]   font-normal hover:underline">
             Best Seller{" "}
           </h1>
-          <h1 className="hover:text-[#FB2E86] text-[10px] lg:text-[15px] font-[Lato]  leading-[21.6px] font-normal">
+          <h1 className="hover:text-[#FB2E86] text-[10px] lg:text-[15px] font-[Lato]   font-normal">
             Featured{" "}
           </h1>
-          <h1 className="hover:text-[#FB2E86] text-[10px] lg:text-[15px] font-[Lato] leading-[21.6px] font-normal">
+          <h1 className="hover:text-[#FB2E86] text-[10px] lg:text-[15px] font-[Lato]  font-normal">
             Special Offer{" "}
           </h1>
-          <h1 className="hover:text-[#FB2E86] text-[10px] lg:text-[15px] font-[Lato] leading-[21.6px] font-normal">
+          <h1 className="hover:text-[#FB2E86] text-[10px] lg:text-[15px] font-[Lato]  font-normal">
             New Arrival{" "}
           </h1>
         </div>
@@ -243,7 +243,7 @@ export default function Section4() {
             </div>
           </div>{" "}
           <div className=" blog4 w-[280px] sm:w-[300px] llm:w-[365px] group  h-[306px] shadow-md hover:shadow-xl transition-shadow duration-300">
-            <div className="h-[87%] flex relative justify-center items-center  hover:bg-white bg-[#F7F7F7]">
+            <div className="h-[87%] overflow-y-hidden flex relative justify-center items-center  hover:bg-white bg-[#F7F7F7]">
               <Image src={image4} alt="image4" />
               <Image
                 src={sale}
@@ -300,7 +300,7 @@ export default function Section4() {
               </svg>
             </div>
 
-            <div className="flex justify-between p-2 overflow-y-hidden items-center">
+            <div className="flex justify-between p-2  items-center">
               <div className=" font-semibold">Comfort Handy Craft</div>
               <div className="flex gap-2 justify-center items-center">
                 <div className=" font-semibold ">$42.00</div>
@@ -448,12 +448,12 @@ export default function Section4() {
           </div>{" "}
         </div>
         {/* ---------------what shop offers----------- */}
-        <div className=" flex justify-center flex-col  items-center gap-2 sm:gap-5 md:gap-10">
+        <div className=" flex justify-center flex-col mt-10  items-center gap-2 sm:gap-5 md:gap-10">
           <h1 className="font-bold  text-[30px]   md:text-[38px] lg:text-[42px] ">
             What Shop Offers
           </h1>
           <div className=" grid  grid-cols-1 sm:grid-cols-2 clg:grid-cols-4 gap-5 shadow-2xl  hover:shadow-3xl transition-shadow duration-300">
-            <div className="blog1 w-[270px] h-[320px]  flex justify-center items-center gap-5 flex-col shadow-lg  hover:shadow-xl transition-shadow duration-300">
+            <div className="blog1 w-[270px] h-[320px] mb-8  flex justify-center items-center gap-5 flex-col shadow-lg  hover:shadow-xl transition-shadow duration-300">
               <Image src={logo1} alt="logo1" />
               <h1 className="text-[22px] font-semibold">24/7 Support</h1>
               <p className="text-[#1A0B5B4D] font-bold text-[16px] text-center">

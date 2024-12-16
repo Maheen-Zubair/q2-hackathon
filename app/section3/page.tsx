@@ -3,7 +3,7 @@ import Image from "next/image";
 import image1 from "../../public/Group 153.png";
 export default function Section3() {
   return (
-    <div className="mainContainer w-screen bg-[#F1F0FF] flex justify-center items-center">
+    <div className="mainContainer w-screen mt-24 bg-[#F1F0FF] flex justify-center items-center">
       <div className="subContainer justify-center items-center lg:w-[60%] md:w-[70%] w-[80%]  h-[220px] sm:[300px] md:h-[480px] lg:h-[550px] flex  bg-[#F1F0FF] ">
         <div className="w-[50%] ">
         <Image src={image1} alt="image" />
@@ -30,9 +30,9 @@ export default function Section3() {
             <button className=" md:mt-6 mt-3 text-[5px] clxs:text-[9px] w-[80px] h-[18px] sm:w-[120px] sm:h-[28px] sl:w-[163px] sl:h-[50px] text-white bg-[#FB2E86] rounded-[2px] hover:bg-[#d73078]  sl:text-[17px] leading-[19.92px] tracking-[2%] hover:shadow-black hover:shadow-sm">
             Add To Cart
             </button>
-            <div className="flex flex-col  ">
-            <h1 className=" md:text-[14px] md:leading-[16.41px] tracking-[2%] text-[#151875] text-[5px] clxs:text-[9px]">B&B Italian Sofa</h1>
-           <h1 className="font-normal md:text-[14px] md:leading-[16.8px] text-[#151875] text-[5px] clxs:text-[9px]">$32.00</h1> 
+            <div className="flex flex-col mt-5 ">
+            <h1 className=" md:text-[14px] font-semibold tracking-[2%] text-[#151875] text-[5px] clxs:text-[9px]">B&B Italian Sofa</h1>
+           <h1 className="font-normal md:text-[14px]  text-[#151875] text-[5px] clxs:text-[9px]">$32.00</h1> 
            </div>
             </div>
           </ul>

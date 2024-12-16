@@ -53,7 +53,7 @@ export default function Detail({ params }: { params: pramsInterface }) {
 
   return (
     <div className="">
-       <div className="lg:h-[286px] h-[120px] md:h-[220px] w-full bg-[#F6F5FF] flex flex-col items-start justify-center">
+       <div className="lg:h-[286px] h-[120px] mt-5 md:h-[220px] w-full bg-[#F6F5FF] flex flex-col items-start justify-center">
             <div className=" flex flex-col items-start justify-center lg:pl-28 pl-10 md:pl-16">
                 <h1 className="lg:text-[36px] text-[20px] md:text-[28px] font-bold text-[#101750]">Product Details</h1>
                 <p className="text-black lg:text-[16px] text-[12px] md:text-[14px] ">Home . Pages <span className="text-[#FB2E86]">. Product Details</span></p>

@@ -12,19 +12,35 @@ import Section from "./section/page";
 export default function Home() {
   return (
     <div>
-      <Section1/>
-       <Section2/>
-       <Section3/>
-      <Section4/>
-      <Section5/>
-      <Section5b />
-      <Section6/>
+      {/* -----------main slide:"New Furniture Collection Trends in 2020"-------- */}
+      <Section1 />  
+      <Section2 />
 
-<Section/>
-       <Section7/>
-      <Section8/> 
-      <Section9/>  
+      {/* -------Leatest Products , What Shopex Offer!-------- */}
+      <Section4 />
+
+      {/* ---------Unique Features Of leatest & Trending Poducts------ */}
+      <Section3 />
+ 
+ {/* ------- Trending Products ------- */}
+      <Section5b />
+      <Section />
+
+      {/* -------Discount Item--------- */}
+      <Section5 />
+
+       {/* ------Top Categories-------- */}     
+      <Section6 />
+
+      {/* -----Get Leatest Update By Subscribe 0ur Newslater------- */}
+      <Section7 />
+
+      {/* -----company-logo------------ */}
+      <Section8 />
       
+      {/* -----Leatest Blog------- */}
+      <Section9 /> 
+     
     </div>
   );
 }

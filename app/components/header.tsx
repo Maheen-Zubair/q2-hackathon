@@ -3,7 +3,9 @@ import Image from "next/image";
 import logo from "../../public/Hekto.png";
 import Link from "next/link";
 
+
 export default function Header() {
+  
   return (
     <div>
       {/* -----------Header 1------------ */}
@@ -24,7 +26,7 @@ export default function Header() {
                   fill="white"
                 />
               </svg>
-              <div className="text1 font-semibold  text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-base leading-none ">
+              <div className="text1   text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-base leading-none ">
                 mhhasanul@gmail.com
               </div>
             </div>
@@ -48,7 +50,7 @@ export default function Header() {
                 />
               </svg>
 
-              <div className="text2 font-semibold   text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-base leading-none">
+              <div className="text2    text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-base leading-none">
                 (12345)67890
               </div>
             </div>
@@ -57,7 +59,7 @@ export default function Header() {
             <select
               name="languages"
               id="languages"
-              className="bg-transparent   text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-base font-semibold"
+              className="bg-transparent   text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-base "
             >
               <option value="eng" className="bg-[#7E33E0] ">
                 English
@@ -78,7 +80,7 @@ export default function Header() {
             <select
               name="currencies"
               id="currencies"
-              className="bg-transparent   text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-base font-semibold"
+              className="bg-transparent   text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-base "
             >
               <option value="usd" className="bg-[#7E33E0] ">
                 USD
@@ -97,33 +99,32 @@ export default function Header() {
               </option>
             </select>
             <Link href={"/login"}>
-
-            <div className="loginIcon flex justify-center items-center ">
-              <div className="text font-semibold   text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-baseleading-none">
-                Login
+              <div className="loginIcon flex justify-center items-center ">
+                <div className="text    text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-baseleading-none">
+                  Login
+                </div>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="s:h-[16px] s:w-[16px] xxmd:h-[14px] xxmd:w-[14px] h-[12px] w-[12px]"
+                >
+                  <path
+                    d="M8 2C8.49445 2 8.9778 2.14662 9.38893 2.42133C9.80005 2.69603 10.1205 3.08648 10.3097 3.54329C10.4989 4.00011 10.5484 4.50277 10.452 4.98773C10.3555 5.47268 10.1174 5.91814 9.76777 6.26777C9.41814 6.6174 8.97268 6.8555 8.48773 6.95196C8.00277 7.04843 7.50011 6.99892 7.04329 6.8097C6.58648 6.62048 6.19603 6.30005 5.92133 5.88893C5.64662 5.4778 5.5 4.99445 5.5 4.5C5.5 3.83696 5.76339 3.20107 6.23223 2.73223C6.70108 2.26339 7.33696 2 8 2ZM8 1C7.30777 1 6.63108 1.20527 6.05551 1.58986C5.47993 1.97444 5.03133 2.52107 4.76642 3.16061C4.50152 3.80015 4.4322 4.50388 4.56725 5.18282C4.7023 5.86175 5.03564 6.48539 5.52513 6.97487C6.01461 7.46436 6.63825 7.7977 7.31719 7.93275C7.99612 8.0678 8.69985 7.99848 9.33939 7.73358C9.97893 7.46867 10.5256 7.02007 10.9101 6.4445C11.2947 5.86892 11.5 5.19223 11.5 4.5C11.5 3.57174 11.1313 2.6815 10.4749 2.02513C9.8185 1.36875 8.92826 1 8 1Z"
+                    fill="white"
+                  />
+                  <path
+                    d="M13 15H12V12.5C12 12.1717 11.9353 11.8466 11.8097 11.5433C11.6841 11.24 11.4999 10.9644 11.2678 10.7322C11.0356 10.5001 10.76 10.3159 10.4567 10.1903C10.1534 10.0647 9.8283 10 9.5 10H6.5C5.83696 10 5.20107 10.2634 4.73223 10.7322C4.26339 11.2011 4 11.837 4 12.5V15H3V12.5C3 11.5717 3.36875 10.6815 4.02513 10.0251C4.6815 9.36875 5.57174 9 6.5 9H9.5C10.4283 9 11.3185 9.36875 11.9749 10.0251C12.6313 10.6815 13 11.5717 13 12.5V15Z"
+                    fill="white"
+                  />
+                </svg>
               </div>
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="s:h-[16px] s:w-[16px] xxmd:h-[14px] xxmd:w-[14px] h-[12px] w-[12px]"
-              >
-                <path
-                  d="M8 2C8.49445 2 8.9778 2.14662 9.38893 2.42133C9.80005 2.69603 10.1205 3.08648 10.3097 3.54329C10.4989 4.00011 10.5484 4.50277 10.452 4.98773C10.3555 5.47268 10.1174 5.91814 9.76777 6.26777C9.41814 6.6174 8.97268 6.8555 8.48773 6.95196C8.00277 7.04843 7.50011 6.99892 7.04329 6.8097C6.58648 6.62048 6.19603 6.30005 5.92133 5.88893C5.64662 5.4778 5.5 4.99445 5.5 4.5C5.5 3.83696 5.76339 3.20107 6.23223 2.73223C6.70108 2.26339 7.33696 2 8 2ZM8 1C7.30777 1 6.63108 1.20527 6.05551 1.58986C5.47993 1.97444 5.03133 2.52107 4.76642 3.16061C4.50152 3.80015 4.4322 4.50388 4.56725 5.18282C4.7023 5.86175 5.03564 6.48539 5.52513 6.97487C6.01461 7.46436 6.63825 7.7977 7.31719 7.93275C7.99612 8.0678 8.69985 7.99848 9.33939 7.73358C9.97893 7.46867 10.5256 7.02007 10.9101 6.4445C11.2947 5.86892 11.5 5.19223 11.5 4.5C11.5 3.57174 11.1313 2.6815 10.4749 2.02513C9.8185 1.36875 8.92826 1 8 1Z"
-                  fill="white"
-                />
-                <path
-                  d="M13 15H12V12.5C12 12.1717 11.9353 11.8466 11.8097 11.5433C11.6841 11.24 11.4999 10.9644 11.2678 10.7322C11.0356 10.5001 10.76 10.3159 10.4567 10.1903C10.1534 10.0647 9.8283 10 9.5 10H6.5C5.83696 10 5.20107 10.2634 4.73223 10.7322C4.26339 11.2011 4 11.837 4 12.5V15H3V12.5C3 11.5717 3.36875 10.6815 4.02513 10.0251C4.6815 9.36875 5.57174 9 6.5 9H9.5C10.4283 9 11.3185 9.36875 11.9749 10.0251C12.6313 10.6815 13 11.5717 13 12.5V15Z"
-                  fill="white"
-                />
-              </svg>
-            </div>
             </Link>
 
             <div className="wishlistIcon flex justify-center items-center s:gap-1">
-              <div className="text font-semibold   text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-base leading-none">
+              <div className="text    text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-base leading-none">
                 Wishlist
               </div>
               <svg
@@ -143,34 +144,34 @@ export default function Header() {
               </svg>
 
               {/* ---------------cart svg-------------- */}
-              <Link href={"/cart"}>
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className=" ml-2 s:ml-5 s:h-[24px] s:w-[24px] xxmd:h-[18px] xxmd:w-[18px] h-[14px] w-[14px]"
-              >
-                <path
-                  d="M2.5 4.25C2.5 4.05109 2.57902 3.86032 2.71967 3.71967C2.86032 3.57902 3.05109 3.5 3.25 3.5H3.808C4.758 3.5 5.328 4.139 5.653 4.733C5.87 5.129 6.027 5.588 6.15 6.004C6.18327 6.00137 6.21663 6.00004 6.25 6H18.748C19.578 6 20.178 6.794 19.95 7.593L18.122 14.002C17.9581 14.5769 17.6114 15.0827 17.1343 15.4428C16.6572 15.803 16.0758 15.9979 15.478 15.998H9.53C8.92749 15.998 8.34165 15.8002 7.86252 15.4349C7.3834 15.0696 7.0375 14.557 6.878 13.976L6.118 11.204L4.858 6.956L4.857 6.948C4.701 6.381 4.555 5.85 4.337 5.454C4.128 5.069 3.96 5 3.809 5H3.25C3.05109 5 2.86032 4.92098 2.71967 4.78033C2.57902 4.63968 2.5 4.44891 2.5 4.25ZM7.573 10.84L8.324 13.579C8.474 14.121 8.967 14.498 9.53 14.498H15.478C15.7497 14.498 16.014 14.4095 16.2309 14.2458C16.4478 14.0821 16.6054 13.8523 16.68 13.591L18.417 7.5H6.585L7.559 10.787L7.573 10.84Z"
-                  fill="white"
-                  stroke="white"
-                  stroke-width="0.2"
-                />
-                <path
-                  d="M11 19C11 19.5304 10.7893 20.0391 10.4142 20.4142C10.0391 20.7893 9.53043 21 9 21C8.46957 21 7.96086 20.7893 7.58579 20.4142C7.21071 20.0391 7 19.5304 7 19C7 18.4696 7.21071 17.9609 7.58579 17.5858C7.96086 17.2107 8.46957 17 9 17C9.53043 17 10.0391 17.2107 10.4142 17.5858C10.7893 17.9609 11 18.4696 11 19ZM9.5 19C9.5 18.8674 9.44732 18.7402 9.35355 18.6464C9.25979 18.5527 9.13261 18.5 9 18.5C8.86739 18.5 8.74021 18.5527 8.64645 18.6464C8.55268 18.7402 8.5 18.8674 8.5 19C8.5 19.1326 8.55268 19.2598 8.64645 19.3536C8.74021 19.4473 8.86739 19.5 9 19.5C9.13261 19.5 9.25979 19.4473 9.35355 19.3536C9.44732 19.2598 9.5 19.1326 9.5 19Z"
-                  fill="white"
-                  stroke="white"
-                  stroke-width="0.2"
-                />
-                <path
-                  d="M18 19C18 19.5304 17.7893 20.0391 17.4142 20.4142C17.0391 20.7893 16.5304 21 16 21C15.4696 21 14.9609 20.7893 14.5858 20.4142C14.2107 20.0391 14 19.5304 14 19C14 18.4696 14.2107 17.9609 14.5858 17.5858C14.9609 17.2107 15.4696 17 16 17C16.5304 17 17.0391 17.2107 17.4142 17.5858C17.7893 17.9609 18 18.4696 18 19ZM16.5 19C16.5 18.8674 16.4473 18.7402 16.3536 18.6464C16.2598 18.5527 16.1326 18.5 16 18.5C15.8674 18.5 15.7402 18.5527 15.6464 18.6464C15.5527 18.7402 15.5 18.8674 15.5 19C15.5 19.1326 15.5527 19.2598 15.6464 19.3536C15.7402 19.4473 15.8674 19.5 16 19.5C16.1326 19.5 16.2598 19.4473 16.3536 19.3536C16.4473 19.2598 16.5 19.1326 16.5 19Z"
-                  fill="white"
-                  stroke="white"
-                  stroke-width="0.2"
-                />
-              </svg>
+              <Link href={"/shoppingCart"}>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className=" ml-2 s:ml-5 s:h-[24px] s:w-[24px] xxmd:h-[18px] xxmd:w-[18px] h-[14px] w-[14px]"
+                >
+                  <path
+                    d="M2.5 4.25C2.5 4.05109 2.57902 3.86032 2.71967 3.71967C2.86032 3.57902 3.05109 3.5 3.25 3.5H3.808C4.758 3.5 5.328 4.139 5.653 4.733C5.87 5.129 6.027 5.588 6.15 6.004C6.18327 6.00137 6.21663 6.00004 6.25 6H18.748C19.578 6 20.178 6.794 19.95 7.593L18.122 14.002C17.9581 14.5769 17.6114 15.0827 17.1343 15.4428C16.6572 15.803 16.0758 15.9979 15.478 15.998H9.53C8.92749 15.998 8.34165 15.8002 7.86252 15.4349C7.3834 15.0696 7.0375 14.557 6.878 13.976L6.118 11.204L4.858 6.956L4.857 6.948C4.701 6.381 4.555 5.85 4.337 5.454C4.128 5.069 3.96 5 3.809 5H3.25C3.05109 5 2.86032 4.92098 2.71967 4.78033C2.57902 4.63968 2.5 4.44891 2.5 4.25ZM7.573 10.84L8.324 13.579C8.474 14.121 8.967 14.498 9.53 14.498H15.478C15.7497 14.498 16.014 14.4095 16.2309 14.2458C16.4478 14.0821 16.6054 13.8523 16.68 13.591L18.417 7.5H6.585L7.559 10.787L7.573 10.84Z"
+                    fill="white"
+                    stroke="white"
+                    stroke-width="0.2"
+                  />
+                  <path
+                    d="M11 19C11 19.5304 10.7893 20.0391 10.4142 20.4142C10.0391 20.7893 9.53043 21 9 21C8.46957 21 7.96086 20.7893 7.58579 20.4142C7.21071 20.0391 7 19.5304 7 19C7 18.4696 7.21071 17.9609 7.58579 17.5858C7.96086 17.2107 8.46957 17 9 17C9.53043 17 10.0391 17.2107 10.4142 17.5858C10.7893 17.9609 11 18.4696 11 19ZM9.5 19C9.5 18.8674 9.44732 18.7402 9.35355 18.6464C9.25979 18.5527 9.13261 18.5 9 18.5C8.86739 18.5 8.74021 18.5527 8.64645 18.6464C8.55268 18.7402 8.5 18.8674 8.5 19C8.5 19.1326 8.55268 19.2598 8.64645 19.3536C8.74021 19.4473 8.86739 19.5 9 19.5C9.13261 19.5 9.25979 19.4473 9.35355 19.3536C9.44732 19.2598 9.5 19.1326 9.5 19Z"
+                    fill="white"
+                    stroke="white"
+                    stroke-width="0.2"
+                  />
+                  <path
+                    d="M18 19C18 19.5304 17.7893 20.0391 17.4142 20.4142C17.0391 20.7893 16.5304 21 16 21C15.4696 21 14.9609 20.7893 14.5858 20.4142C14.2107 20.0391 14 19.5304 14 19C14 18.4696 14.2107 17.9609 14.5858 17.5858C14.9609 17.2107 15.4696 17 16 17C16.5304 17 17.0391 17.2107 17.4142 17.5858C17.7893 17.9609 18 18.4696 18 19ZM16.5 19C16.5 18.8674 16.4473 18.7402 16.3536 18.6464C16.2598 18.5527 16.1326 18.5 16 18.5C15.8674 18.5 15.7402 18.5527 15.6464 18.6464C15.5527 18.7402 15.5 18.8674 15.5 19C15.5 19.1326 15.5527 19.2598 15.6464 19.3536C15.7402 19.4473 15.8674 19.5 16 19.5C16.1326 19.5 16.2598 19.4473 16.3536 19.3536C16.4473 19.2598 16.5 19.1326 16.5 19Z"
+                    fill="white"
+                    stroke="white"
+                    stroke-width="0.2"
+                  />
+                </svg>
               </Link>
             </div>
           </div>
@@ -178,80 +179,101 @@ export default function Header() {
       </div>
 
       {/* ------------header 2------------- */}
-      
+
       <div className="mainContainer overflow-y-hidden h-[38px] flex items-center justify-center bg-white pb-[10px] pt-[35px] md:pb-[20px] md:pt-[50px]">
-  <div className="subContainer flex  lg:w-[96%] big:w-[90%] xxmd:w-[70%] items-center justify-between">
-    {/* Logo */}
-    <div className="logo font-bold flex text-md leading-[24px] items-center tracking-[3%] lg:text-[24px]">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth="1.5"
-        stroke="currentColor"
-        className="size-6 mr-1 hilg:hidden"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-        />
-      </svg>
-      <Image
-        src={logo}
-        alt="logo"
-        className="w-[70px] h-[20px] sl:w-[98px] sl:h-[30px]"
-      />
-    </div>
+        <div className="subContainer flex  lg:w-[96%] big:w-[90%] xxmd:w-[70%] items-center justify-between">
+          {/* Logo */}
+          <div className="logo font-bold flex text-md leading-[24px] items-center tracking-[3%] lg:text-[24px]">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="size-6 mr-1 hilg:hidden"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
+            <Image
+              src={logo}
+              alt="logo"
+              className="w-[70px] h-[20px] sl:w-[98px] sl:h-[30px]"
+            />
+          </div>
 
-    {/* Options */}
-    <div className="options hidden lg:flex elg:flex text-[#0D0E43] elg:w-auto  font-md h-[24px] gap-4 clg:gap-[20px] font-semibold items-center">
-      <select
-        name="languages"
-        id="languages"
-        className="bg-transparent hover:text-[#FB2E86] text-[10px] md:text-[12px] lg:text-[14px] clg:text-base font-semibold border border-gray-300 rounded-sm px-2 focus:outline-none"
-      >
-        <option value="eng" className="bg-[#FB2E86] text-white">
-          Home
-        </option>
-        <option value="urd" className="bg-[#FB2E86] text-white">
-          Urdu
-        </option>
-      </select>
-      <Link href={"/"} className="hover:text-[#FB2E86]">Pages</Link>
-      <Link href={"/grid"} className="hover:text-[#FB2E86]">Products</Link>
-      <Link href={"/"}className="hover:text-[#FB2E86]">Blog</Link>
-      <Link href={"/"} className="hover:text-[#FB2E86]">Shop</Link>
-      <Link href={"/contact"}className="hover:text-[#FB2E86]">Contact</Link>
-    </div>
+          {/* Options */}
+          <div className="options hidden lg:flex elg:flex text-[#0D0E43] elg:w-auto  font-md h-[24px] gap-4 clg:gap-[20px]  items-center">
+            <select
+              name="Pages"
+              id="Pages"
+              className="bg-transparent hover:text-[#FB2E86] text-[10px] md:text-[12px] lg:text-[14px] clg:text-base  border border-gray-300 rounded-sm px-2 focus:outline-none"
+            >
+              <option value="eng" className="bg-[#FB2E86] text-white">
+                Home
+              </option>
+              <option value="aboutUs" className="bg-[#FB2E86] text-white">
+                About Us
+              </option>
+              <option value="hektoDemo" className="bg-[#FB2E86] text-white">
+                Hekto Demo
+              </option>
+              <option value="urd" className="bg-[#FB2E86] text-white">
+                Order Completed
+              </option>
+              <option value="notFound" className="bg-[#FB2E86] text-white">
+                404 Not Found
+              </option>
+              <option value="FAQ" className="bg-[#FB2E86] text-white">
+                FAQ
+              </option>
+            </select>
+            <Link href={"/"} className="hover:text-[#FB2E86]">
+              Pages
+            </Link>
+            <Link href={"/grid"} className="hover:text-[#FB2E86]">
+              Products
+            </Link>
+            <Link href={"/"} className="hover:text-[#FB2E86]">
+              Blog
+            </Link>
+            <Link href={"/"} className="hover:text-[#FB2E86]">
+              Shop
+            </Link>
+            <Link href={"/contact"} className="hover:text-[#FB2E86]">
+              Contact
+            </Link>
+          </div>
 
-    {/* Search */}
-    <div className="search flex ml-10 s:ml-44 elg:ml-56">
-      <input
-        type="text"
-        placeholder="Search..."
-        className="h-6 w-20 sm:h-9 pl-2 xxmd:w-24 xmd:w-28 md:w-64 s:w-40 text-gray-800 border-[#E7E6EF] border-2 border-r-0 placeholder:text-xs focus:ring-2 focus:ring-[#FB2E86] focus:outline-none"
-      />
-      <button className="h-6 w-6 bg-[#FB2E86] flex sm:h-9 sm:w-9 items-center justify-center">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="1.5"
-          stroke="currentColor"
-          className="size-4 s:size-6 invert"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-          />
-        </svg>
-      </button>
-    </div>
-  </div>
-</div>
-
+          {/* Search */}
+          <div className="search flex ml-10 s:ml-44 elg:ml-56">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="h-6 w-20 sm:h-9 pl-2 xxmd:w-24 xmd:w-28 md:w-64 s:w-40 text-gray-800 border-[#E7E6EF] border-2 border-r-0 placeholder:text-xs focus:ring-2 focus:ring-[#FB2E86] focus:outline-none"
+            />
+            <button className="h-6 w-6 bg-[#FB2E86] flex sm:h-9 sm:w-9 items-center justify-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="size-4 s:size-6 invert"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

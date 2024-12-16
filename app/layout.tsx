@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "./components/header";
 import Footer from "./components/footer";
-
+import { Josefin_Sans } from "@next/font/google";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -14,6 +14,10 @@ const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
+});
+const josefinSans = Josefin_Sans({
+  subsets: ["latin"], // Choose your character subsets
+  weight: ["400", "700"], // Add weights you want (e.g., normal, bold)
 });
 
 export const metadata: Metadata = {
@@ -29,12 +33,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >      
-      <Header/>
+        className={`${josefinSans.className} antialiased`}
+      >
+        <Header/>
         {children}
-      <Footer/>
-
+        <Footer/>
       </body>
     </html>
   );

@@ -81,7 +81,8 @@ export default function Section5() {
               <p className="font-[500] text-[7px] sm:text-[8px] md:text-[10px] lg:text-[16px] md:leading-[21.12px] tracking-[1.5%] text-[#ACABC3]">
                 Material expose like metals
               </p>
-            </div><div className="flex justify-center">
+            </div>
+            <div className="flex justify-center">
               <svg
                 width="18"
                 height="13"
@@ -102,7 +103,8 @@ export default function Section5() {
               <p className="font-[500] text-[7px] sm:text-[8px] md:text-[10px] lg:text-[16px] md:leading-[21.12px] tracking-[1.5%] text-[#ACABC3]">
                 Material expose like metals
               </p>
-            </div><div className="flex justify-center">
+            </div>
+            <div className="flex justify-center">
               <svg
                 width="18"
                 height="13"
@@ -131,9 +133,20 @@ export default function Section5() {
             </button>
           </div>
         </div>
-        <div className="w-[50%] relative flex justify-center items-center">
-        <div className= " h-[130px] w-[125px] sm:h-[150px] sm:w-[150px] md:h-[200px] md:w-[200px] lg:h-[250px] lg:w-[250px] clg:h-[300px] clg:w-[300px] bg-pink-100 rounded-full "></div>
-          <Image src={image1} alt="image" className="max-w-full  absolute" />
+        <div className="relative flex justify-center items-center overflow-hidden">
+          {/* Pink Circle */}
+          <div
+            className="h-[130px] w-[125px] sm:h-[150px] sm:w-[150px] md:h-[200px] md:w-[200px] 
+                  lg:h-[250px] lg:w-[250px] clg:h-[300px] clg:w-[300px] 
+                  bg-pink-100 rounded-full z-0"
+          ></div>
+
+          {/* Image */}
+          <Image
+            src={image1}
+            alt="image"
+            className="absolute w-[90%] h-[90%] md:w-[100%] md:h-[100%] object-cover z-10"
+          />
         </div>
       </div>
     </div>

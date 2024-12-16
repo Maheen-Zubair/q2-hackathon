@@ -1,7 +1,7 @@
 import Section8 from "../section8/page";
 export default function Login() {
     return (
-      <div className="flex flex-col pt-24 items-center justify-center min-h-screen ">
+      <div className="flex flex-col mt-5 items-center justify-center min-h-screen ">
          <div className="lg:h-[286px] h-[120px] md:h-[220px] w-full bg-[#F6F5FF] flex flex-col items-start justify-center">
             <div className=" flex flex-col items-start justify-center lg:pl-28 pl-10 md:pl-16">
                 <h1 className="lg:text-[36px] text-[20px] md:text-[28px] font-bold text-[#101750]">Login</h1>
@@ -9,7 +9,7 @@ export default function Login() {
             </div>
 
         </div>
-        <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
+        <div className="w-full mt-36 max-w-md bg-white p-8 rounded-lg shadow-lg">
           <h2 className="text-2xl font-bold text-center mb-3">Login</h2>
           <p className="text-center text-[#9096B2] mb-6">
             Please login using account details below.

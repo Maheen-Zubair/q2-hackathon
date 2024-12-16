@@ -25,8 +25,8 @@ export default function Footer() {
                 <div className="">Sign Up</div>
               </div>
             </div>
-            <h3 className="text-sm font-semibold">Contact Info</h3>
-            <h2 className="text-sm font-semibold">
+            <h3 className="text-sm ">Contact Info</h3>
+            <h2 className="text-sm ">
               17 Princess Road, London, Greater London NW1 8JR, UK
             </h2>
           </div>
@@ -34,44 +34,44 @@ export default function Footer() {
 
         <div className="box2 lg:h-[326px] w-full lg:w-[20%] ">
           <div className="part1 flex gap-4 flex-col ">
-            <div className="font-semibold text-lg text-[#000000]">
+            <div className=" text-lg font-semibold text-[#000000]">
               Catagories
             </div>
             <div className="flex flex-col gap-3">
-              <h1 className=" text-sm font-semibold">Laptops & Computers</h1>
-              <h2 className="text-sm font-semibold">Cameras & Photography</h2>
-              <h3 className="text-sm font-semibold">Smart Phones & Tablets</h3>
-              <h1 className=" text-sm font-semibold">Video Games & Consoles</h1>
-              <h1 className=" text-sm font-semibold">Waterproof Headphones</h1>
+              <h1 className=" text-sm ">Laptops & Computers</h1>
+              <h2 className="text-sm ">Cameras & Photography</h2>
+              <h3 className="text-sm ">Smart Phones & Tablets</h3>
+              <h1 className=" text-sm ">Video Games & Consoles</h1>
+              <h1 className=" text-sm ">Waterproof Headphones</h1>
             </div>
           </div>
         </div>
         <div className="box3 lg:h-[326px]  w-full lg:w-[20%]">
           <div className="part1 flex gap-4 flex-col ">
-            <div className="font-semibold text-lg text-[#000000]">
+            <div className=" text-lg font-semibold text-[#000000]">
               Customer Care
             </div>
             <div className="flex flex-col gap-3">
-              <h1 className=" text-sm font-semibold">My Account</h1>
-              <h2 className="text-sm font-semibold">Discount</h2>
-              <h3 className="text-sm font-semibold">Returns</h3>
-              <h1 className=" text-sm font-semibold">Orders History</h1>
-              <h1 className=" text-sm font-semibold">Order Tracking</h1>
+              <h1 className=" text-sm ">My Account</h1>
+              <h2 className="text-sm ">Discount</h2>
+              <h3 className="text-sm ">Returns</h3>
+              <h1 className=" text-sm ">Orders History</h1>
+              <h1 className=" text-sm ">Order Tracking</h1>
             </div>
           </div>
         </div>
 
         <div className="box5 lg:h-[326px]  w-full lg:w-[20%] ">
           <div className="part1 flex gap-4 flex-col ">
-            <div className="font-semibold text-lg text-[#000000]">Pages</div>
+            <div className=" text-lg text-[#000000] font-semibold">Pages</div>
             <div className="flex flex-col gap-3">
-              <h1 className=" text-sm font-semibold">Blog</h1>
-              <h2 className="text-sm font-semibold">Category</h2>
-              <h3 className="text-sm font-semibold">Pre-Built Pages</h3>
-              <h1 className=" text-sm font-semibold">
+              <h1 className=" text-sm ">Blog</h1>
+              <h2 className="text-sm ">Category</h2>
+              <h3 className="text-sm ">Pre-Built Pages</h3>
+              <h1 className=" text-sm ">
                 Visual Composer Elements
               </h1>
-              <h1 className=" text-sm font-semibold">WooCommerce Pages</h1>
+              <h1 className=" text-sm ">WooCommerce Pages</h1>
             </div>
           </div>
         </div>
