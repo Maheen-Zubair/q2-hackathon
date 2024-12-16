@@ -16,8 +16,8 @@ const geistMono = localFont({
   weight: "100 900",
 });
 const josefinSans = Josefin_Sans({
-  subsets: ["latin"], // Choose your character subsets
-  weight: ["400", "700"], // Add weights you want (e.g., normal, bold)
+  subsets: ["latin"], 
+  weight: ["400", "700"], 
 });
 
 export const metadata: Metadata = {
