@@ -72,8 +72,8 @@ export default function ShopList() {
       </div>
       <div className="flex flex-col justify-center items-center lg:mt-24 mt-16">
         <div>
-          {productData.map((item) => (
-            <div className=" flex  flex-wrap  gap-3 lg:gap-5 mb-5 items-center justify-center">
+          {productData.map((item,index ) => (
+            <div key={index} className=" flex  flex-wrap  gap-3 lg:gap-5 mb-5 items-center justify-center">
               <div>
                 <Image
                   width={313}
