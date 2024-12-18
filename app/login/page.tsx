@@ -9,7 +9,7 @@ export default function Login() {
             </div>
 
         </div>
-        <div className="w-full mt-36 max-w-md bg-white p-8 rounded-lg shadow-lg">
+        <div className="w-full mt-10 sm:mt-36 max-w-md bg-white p-8 rounded-lg shadow-lg">
           <h2 className="text-2xl font-bold text-center mb-3">Login</h2>
           <p className="text-center text-[#9096B2] mb-6">
             Please login using account details below.

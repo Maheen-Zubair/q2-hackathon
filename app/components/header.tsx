@@ -125,7 +125,8 @@ export default function Header() {
 
             <div className="wishlistIcon flex justify-center items-center s:gap-1">
               <div className="text    text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-base leading-none">
-                Wishlist
+              <Link href={"/notFound"}>              Wishlist
+              </Link>
               </div>
               <svg
                 width="16"
@@ -234,13 +235,13 @@ export default function Header() {
             <Link href={"/"} className="hover:text-[#FB2E86]">
               Pages
             </Link>
-            <Link href={"/grid"} className="hover:text-[#FB2E86]">
+            <Link href={"/gridDefault"} className="hover:text-[#FB2E86]">
               Products
             </Link>
-            <Link href={"/"} className="hover:text-[#FB2E86]">
+            <Link href={"/blog"} className="hover:text-[#FB2E86]">
               Blog
             </Link>
-            <Link href={"/"} className="hover:text-[#FB2E86]">
+            <Link href={"/shoplist"} className="hover:text-[#FB2E86]">
               Shop
             </Link>
             <Link href={"/contact"} className="hover:text-[#FB2E86]">

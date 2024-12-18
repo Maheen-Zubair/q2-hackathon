@@ -1,14 +1,29 @@
 import Image from "next/image";
-const Cart = () => {
+  import React from 'react'
+  
+ 
+   
+  export default function ShopppingCart(){
     const images=[
-       {id: 1, image: "/bag (3).png"},
-       {id: 2, image: "/bag (4).png"},
-       {id: 3, image: "/bag (5).png"},
-       {id: 4, image: "/bag (1).png"},
-       {id: 5, image: "/bag (2).png"},
+      {id: 1, image: "/bag (3).png"},
+      {id: 2, image: "/bag (4).png"},
+      {id: 3, image: "/bag (5).png"},
+      {id: 4, image: "/bag (1).png"},
+      {id: 5, image: "/bag (2).png"},
 
-    ]
-  return (
+   ]
+   return (
+    <div className="">
+       <div className="lg:h-[286px] h-[120px] mt-5 sm:mb-16 mb-10 md:h-[220px] w-full bg-[#F6F5FF] flex flex-col items-start justify-center">
+        <div className=" flex flex-col items-start justify-center lg:pl-28 pl-10 md:pl-16">
+          <h1 className="lg:text-[36px] text-[20px] md:text-[28px] font-bold text-[#101750]">
+          Shopping Curt
+          </h1>
+          <p className="text-black lg:text-[16px] text-[12px] md:text-[14px] ">
+            Home . Pages <span className="text-[#FB2E86]">. Shopping Curt</span>
+          </p>
+        </div>
+      </div>
     <div className="min-h-screen p-6 text-[#1D3178]">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -49,10 +64,10 @@ const Cart = () => {
               </tbody>
             </table>
             <div className="flex justify-between mt-6">
-              <button className="bg-[#FB2E86] h-[39px] w-[134px] text-white px-4 py-2 rounded-lg">
+              <button className="bg-[#FB2E86] hover:bg-[#c92b70] h-[39px] w-[134px]  rounded-[2px] text-white  ">
                 Update Curt
               </button>
-              <button className="bg-[#FB2E86] h-[39px] w-[134px] rounded-[2px] text-white px-4 py-2 ">
+              <button className="bg-[#FB2E86] hover:bg-[#c92b70] h-[39px] w-[134px] rounded-[2px] text-white  ">
                 Clear Curt
               </button>
             </div>
@@ -107,7 +122,7 @@ const Cart = () => {
                   placeholder="Postal Code"
                   className="w-full bg-[#F4F4FC] border  p-2 rounded-lg mb-4"
                 />
-                <button className="bg-[#FB2E86] hover:bg-[#d23076] h-[41px] w-[179px] text-white  py-2 rounded-[2px]">
+                <button className="bg-[#FB2E86]  rounded-[3px] hover:bg-[#d23076] h-[41px] w-[179px] text-white  py-2 ml-5">
                   Calculate Shipping
                 </button>
               </form>
@@ -116,7 +131,7 @@ const Cart = () => {
         </div>
       </div>
     </div>
+    </div>
   );
 };
 
-export default Cart;

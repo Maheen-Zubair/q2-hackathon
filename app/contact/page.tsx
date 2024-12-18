@@ -1,11 +1,10 @@
-// pages/contact.js
 import Image from "next/image";
 import image from "../../public/Group 124.png";
 import image2 from "../../public/Group 100.png";
 export default function Contact() {
   return (
     <div>
-      <div className="lg:h-[286px] mt-5 h-[120px] md:h-[220px] w-full bg-[#F6F5FF] flex flex-col items-start justify-center">
+      <div className="lg:h-[286px] mt-5 sm:mb-16 mb-7 h-[120px] md:h-[220px] w-full bg-[#F6F5FF] flex flex-col items-start justify-center">
         <div className=" flex flex-col items-start justify-center lg:pl-28 pl-10 md:pl-16">
           <h1 className="lg:text-[36px] text-[20px] md:text-[28px] font-bold text-[#101750]">
             Contact Us
@@ -15,7 +14,7 @@ export default function Contact() {
           </p>
         </div>
       </div>
-      <div className="h-screen  pb-24 bg-white flex flex-col justify-center items-center p-4">
+      <div className="h-full pb-24 bg-white flex flex-col justify-center items-center p-4">
         <div className="max-w-5xl w-full bg-white  rounded-lg p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>

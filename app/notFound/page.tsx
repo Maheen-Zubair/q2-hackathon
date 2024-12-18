@@ -13,7 +13,7 @@ export default function NotFound() {
             </p>
           </div>
         </div>
-      <div className="flex flex-col pt-24 items-center justify-center min-h-screen ">
+      <div className="flex flex-col pt-24 items-center justify-center  ">
        
         <div className=" flex justify-center flex-col items-center">
           <Image src={notFound} alt="notFoundImage" />

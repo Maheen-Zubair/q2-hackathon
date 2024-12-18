@@ -22,12 +22,12 @@ export default function AboutUs() {
             </p>
           </div>
         </div>
-        <div className="flex mt-36 justify-center items-center  flex-col ">
-          <div className="grid elg:grid-cols-2 grid-cols-1 gap-6">
-            <div className=" md:h-[409px] md:w-[550px] xxmd:h-[350px] xxmd:w-[400px] w-[350] h-[300px]">
+        <div className="flex sm:mt-36 mt-10 justify-center items-center  flex-col ">
+          <div className="grid elg:grid-cols-2 grid-cols-1 sm:gap-6 ">
+            <div className=" md:h-[409px] p-4 md:w-[550px] xxmd:h-[350px] xxmd:w-[400px] w-[350] h-[300px]">
               <Image src={image1} alt="image1" />
             </div>
-            <div className="h-[409px] w-[550px] gap-4 flex flex-col pt-8">
+            <div className="md:w-[550px] p-4  xxmd:w-[400px] w-[350] gap-4 flex flex-col sm:pt-8">
               <h1 className="text-[36px] font-josefin text-[#151875] font-bold">
                 {" "}
                 Know About Our Ecomerce Business, History
@@ -86,7 +86,7 @@ export default function AboutUs() {
           </div>
         </div>
         {/* -------------Client Say!----------- */}
-        <div className="h-[500px] w-screen mt-32 mb-80 bg-[#FBFBFF] flex justify-center gap-10 pb-3 flex-col items-center">
+        <div className="h-[500px] w-screen mt-32 mb-20 sm:mb-80 bg-[#FBFBFF] flex justify-center gap-10 pb-3 flex-col items-center">
           <div className="text-[42px] font-bold">Our Client Say!</div>
           <div className="w-[689px] h-[265px]">
             <div className="h-[89px] flex justify-center items-center">

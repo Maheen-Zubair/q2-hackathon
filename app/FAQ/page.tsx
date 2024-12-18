@@ -9,7 +9,7 @@ export default function FAQ() {
                 <p className="text-black lg:text-[16px] text-[12px] md:text-[14px] ">Home . Pages <span className="text-[#FB2E86]">. Faq</span></p>
             </div>
             </div>
-    <div className="flex justify-center mt-32 items-center">
+    <div className="flex justify-center mt-10 sm:mt-32 items-center">
         
       <div className="grid  grid-cols-1 cclg:grid-cols-2 ">
         {/* --------text--------- */}
