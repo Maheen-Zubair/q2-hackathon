@@ -63,8 +63,8 @@ export default function Blog() {
       <div className="mainContainer w-screen mt-10 sm:mt-20  flex justify-center">
         <div className="subContainer w-[95%] md:w-[85%]  gap-10 flex xlg:flex-row flex-col items-center lg:items-start justify-center ">
           <div className="part1 w-full max-w-[600px] cclg:max-w-[650px] hilg:max-w-[870px]">
-            {productData.map((item) => (
-              <div className="flex flex-col  lg:gap-5 gap-4">
+            {productData.map((item,index) => (
+              <div key={index} className="flex flex-col  lg:gap-5 gap-4">
                 <Image
                   className="hilg:max-h-[453px] hilg:max-w-[870px] sm:max-h-[300px] sm:max-w-[600px] w-full"
                   height={453}
