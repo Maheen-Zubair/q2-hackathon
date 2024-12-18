@@ -154,8 +154,8 @@ export default function Blog() {
             </div>
 
             <div className=" w-[250px]  h-[270px] flex flex-col justify-between ">
-              {productlist.map((item) => (
-                <div className=" h-[51px]  w-[250px] flex gap-2">
+              {productlist.map((item,index) => (
+                <div key={index} className=" h-[51px]  w-[250px] flex gap-2">
                   <Image
                     height={51}
                     width={70}
