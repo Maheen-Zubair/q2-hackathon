@@ -19,7 +19,6 @@ export default function Section() {
               Shop Now
             </p>
             <Image
-              className="h-[135px] lg:w-[123px]"
               src={image1}
               alt="image"
               height={207}
@@ -39,7 +38,6 @@ export default function Section() {
 
           <div className="flex justify-end">
             <Image
-              className="h-[135px] w-[180px]"
               src={image2}
               alt="image"
               height={173}

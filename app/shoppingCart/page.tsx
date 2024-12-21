@@ -24,11 +24,11 @@ import Image from "next/image";
           </p>
         </div>
       </div>
-    <div className="min-h-screen p-6 text-[#1D3178]">
+    <div className="h-screen p-6 text-[#1D3178]">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 bg-white rounded-lg shadow-lg p-6">
-            <table className="w-full table-auto">
+            <table className="w-full ">
               <thead>
                 <tr className="text-left border-b">
                   <th className="pb-4">Product</th>

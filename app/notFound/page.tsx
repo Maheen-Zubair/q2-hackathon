@@ -17,7 +17,7 @@ export default function NotFound() {
        
         <div className=" flex justify-center flex-col items-center">
           <Image src={notFound} alt="notFoundImage" />
-          <button className="h-[44px] w-[165px] bg-[#FB2E86] text-white rounded-[3px]  hover:bg-pink-700 transition">
+          <button className="h-[44px] w-[165px] bg-[#FB2E86] text-white rounded-[3px]  hover:bg-pink-700 ">
             Back To Home
           </button>
         </div>

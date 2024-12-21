@@ -28,7 +28,7 @@ export default function AboutUs() {
               <Image src={image1} alt="image1" />
             </div>
             <div className="md:w-[550px] p-4  xxmd:w-[400px] w-[350] gap-4 flex flex-col sm:pt-8">
-              <h1 className="text-[36px] font-josefin text-[#151875] font-bold">
+              <h1 className="text-[36px]  text-[#151875] font-bold">
                 {" "}
                 Know About Our Ecomerce Business, History
               </h1>

@@ -1,6 +1,4 @@
 import Image from "next/image";
-// import icon1 from "../public/clarity_grid-view-solid.png"
-// import icon2 from "../public/fa-solid_list.png"
 import Section8 from "../section8/page";
 interface ProductInterface {
   name: string;
