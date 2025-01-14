@@ -22,12 +22,12 @@ export default function Home() {
       {/* ---------Unique Features Of leatest & Trending Poducts------ */}
       <Section3 />
  
- {/* ------- Trending Products ------- */}
-      {/* <Section5b />
-      <Section /> */}
+ {/* git------- Trending Products ------- */}
+      <Section5b />
+      <Section />
 
       {/* -------Discount Item--------- */}
-      {/* <Section5 /> */}
+      <Section5 />
 
        {/* ------Top Categories-------- */}     
       <Section6 />
