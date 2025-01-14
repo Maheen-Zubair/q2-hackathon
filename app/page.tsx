@@ -23,11 +23,11 @@ export default function Home() {
       <Section3 />
  
  {/* ------- Trending Products ------- */}
-      <Section5b />
-      <Section />
+      {/* <Section5b />
+      <Section /> */}
 
       {/* -------Discount Item--------- */}
-      <Section5 />
+      {/* <Section5 /> */}
 
        {/* ------Top Categories-------- */}     
       <Section6 />
