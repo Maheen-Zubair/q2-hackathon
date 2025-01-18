@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
-import Image from "next/image";
 import Section8 from "../../section8/page";
 const GetProductData = () => {
   const res =
