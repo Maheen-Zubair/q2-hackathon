@@ -1,12 +1,12 @@
 import React from "react";
 import Image from "next/image";
-import image1 from "../../public/Rectangle 56.png";
-import logo1 from "../../public/free-delivery 1.png";
-import logo2 from "../../public/cashback 1.png";
-import logo3 from "../../public/premium-quality 1.png";
-import logo4 from "../../public/24-hours-support 1.png";
-import slide from "../../public/Group 89.png";
-import picture from "../../public/Group 200.png";
+import image1 from "../../../public/Rectangle 56.png";
+import logo1 from "../../../public/free-delivery 1.png";
+import logo2 from "../../../public/cashback 1.png";
+import logo3 from "../../../public/premium-quality 1.png";
+import logo4 from "../../../public/24-hours-support 1.png";
+import slide from "../../../public/Group 89.png";
+import picture from "../../../public/Group 200.png";
 
 export default function AboutUs() {
   return (
