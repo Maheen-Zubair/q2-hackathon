@@ -38,11 +38,11 @@ export default function Section() {
 
       useEffect(() => {
         async function fetchCategoryData() {
-          const categoryData:any = await GetProductData();
+          const categoryData:Product[] = await GetProductData();
           setProduct(categoryData);
         }
         async function fetchCategoryData2() {
-          const categoryData2:any = await GetProductData2();
+          const categoryData2:Product[] = await GetProductData2();
           setProduct2(categoryData2);
         }
         fetchCategoryData();
@@ -93,7 +93,7 @@ export default function Section() {
         <div className="xl:w-[420px] lg:w-full lg:h-[240px] xl:h-[270px] w-[90%] h-[200px] bg-white flex flex-col justify-between shadow-sm shadow-gray-300">
         {product.map((item: any,index) => (
 
-          <div className="lg:h-[74px] lg:w-[267px] gap-2 flex items-center justify-center">
+          <div key={index} className="lg:h-[74px] lg:w-[267px] gap-2 flex items-center justify-center">
             <div className="lg:w-[107px] lg:h-[74px] bg-[#F5F6F8] flex justify-center items-center">
               <img width={64} height={71} src={item.imageURL} alt="image"></img>
             </div>

@@ -2,7 +2,6 @@
 import Image from "next/image";
 import star from "/public/Group 236.png";
 import shareLogo from "/public/sharelogos.png";
-import { GetProductData } from "@/app/section4/page";
 import { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
 import image1 from "../../../public/one (1).png";
