@@ -19,14 +19,14 @@ const GetProductData = () => {
 };
 
 interface Product {
-  image: string;
+  imageURL: string;
 }
 
 export default function Section1() {
   const [product, setProduct] = useState<Product[]>([]);
   useEffect(() => {
     async function fetchCategoryData() {
-      const categoryData: any = await GetProductData();
+      const categoryData: Product[] = await GetProductData();
       setProduct(categoryData);
     }
 
@@ -104,16 +104,11 @@ export default function Section1() {
                 <button className="md:mt-6 mt-3 text-[12px] w-[120px] h-[28px] sl:w-[163px] sl:h-[50px] text-white bg-[#FB2E86] rounded-[2px] hover:bg-[#d73078] sl:text-[17px] leading-[19.92px] tracking-[2%] hover:shadow-black hover:shadow-sm">
                   Add To Cart
                 </button>
-                {/* <Image
-                  src={star}
-                  alt="star"
-                  className="absolute md:bottom-10 md:w-[66px] w-[40px] bottom-4 right-[55%] left-[45%]"
-                /> */}
               </div>
               <div className="w-full flex justify-center lg:h-[689px] items-center">
                 <div className="part3 flex mt-8 mb-8 w-[300px] sm:h-[550px] sm:w-[550px]  flex-col items-center justify-center">
-                  {product.map((item: any) => (
-                    <div>
+                  {product.map((item: Product,index) => (
+                    <div key={index}>
                       <img
                         src={item.imageURL}
                         alt="chair"
