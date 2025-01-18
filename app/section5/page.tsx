@@ -1,7 +1,36 @@
+"use client";
+import { useEffect, useState } from "react";
+import { client } from "@/sanity/lib/client";
 import React from "react";
-import Image from "next/image";
-import image1 from "../../public/tortuga-01-b 1.png";
+
+const GetProductData = () => {
+  const res =
+    client.fetch(`*[_type == "product" && "discount" in tags]{
+  name,
+  price,
+   "imageURL": image.asset->url,
+   discountPercentage,
+  }`);
+  return res;
+};
+
+interface Product {
+  name: string;
+  imageURL: string;
+  price: number;
+  discountPercentage:number
+}
+  
 export default function Section5() {
+    const [product, setProduct] = useState<Product[]>([]);
+      useEffect(() => {
+        async function fetchCategoryData() {
+          const categoryData: Product[] = await GetProductData();
+          setProduct(categoryData);
+        }
+    
+        fetchCategoryData();
+      }, []);
   return (
     <div className="mainContainer pt-24 max-w-full overflow-hidden bg-white flex flex-col justify-center items-center">
       <link
@@ -9,29 +38,31 @@ export default function Section5() {
         rel="stylesheet"
       />
       <div className="flex-col justify-center items-center gap-2 md:gap-5 flex">
-        <h1 className="font-josefin text-[20px] sm:[30px] md:text-[38px] lg:text-[42px] leading-[49.22px]">
+        <h1 className="font-josefin text-[27px]  md:text-[38px] lg:text-[42px] leading-[49.22px]">
           Discount Item
         </h1>
-        <div className="options justify-center text-[7px] md:text-[10px] lg:text-[15px] hilg:flex font-md h-[24px] gap-[35px] elg:gap-[40px] flex font-semibold items-center">
-          <h1 className="hover:text-[#FB2E86] text-[7px] md:text-[10px] lg:text-[15px] font-[Lato]  leading-[21.6px] font-normal hover:underline">
+        <div className="options justify-center text-[10px] lg:text-[15px] hilg:flex font-md h-[24px] gap-[35px] elg:gap-[40px] flex font-semibold items-center">
+          <h1 className="hover:text-[#FB2E86] text-[10px] lg:text-[15px] font-[Lato]  leading-[21.6px] font-normal hover:underline">
             Wood Chair
           </h1>
-          <h1 className="hover:text-[#FB2E86] text-[7px] md:text-[10px] lg:text-[15px] font-[Lato]  leading-[21.6px] font-normal">
+          <h1 className="hover:text-[#FB2E86] text-[10px] lg:text-[15px] font-[Lato]  leading-[21.6px] font-normal">
             Plastic Chair
           </h1>
-          <h1 className="hover:text-[#FB2E86] text-[7px] md:text-[10px] lg:text-[15px] font-[Lato] leading-[21.6px] font-normal">
+          <h1 className="hover:text-[#FB2E86] text-[10px] lg:text-[15px] font-[Lato] leading-[21.6px] font-normal">
             Sofa Collection
           </h1>
         </div>
       </div>
-      <div className="subContainer pb-8 justify-center items-center lg:w-[60%] md:w-[70%] w-[80%] h-[220px] sm:[300px] md:h-[480px] lg:h-[597px] flex bg-white ">
-        <div className="w-[50%] flex flex-col md:gap-6">
-          <h1 className="text-[#151875] font-bold text-[15px] sm:text-[24px] md:text-[28px] lg:text-[35px] md:leading-[46.2px] tracking-[1.5%]">
-            20% Discount Of All Products
+      {product.map((item: Product,index) => (
+
+      <div key={index} className="subContainer sm:flex-row flex-col pb-8 justify-center items-center lg:w-[60%] md:w-[70%] w-[80%] h-full sm:[300px] md:h-[480px] lg:h-[597px] flex bg-white ">
+        <div className="sm:w-[50%] flex flex-col md:gap-6">
+          <h1 className="text-[#151875] font-bold text-[28px] lg:text-[35px] md:leading-[46.2px] tracking-[1.5%]">
+           {item.discountPercentage}% Discount Of All Products
           </h1>
           <ul className="list-non flex flex-col md:gap-2">
             <li className="flex items-center md:gap-2">
-              <span className="font-[500] text-[7px] sm:text-[8px] md:text-[10px] lg:text-[16px] md:leading-[21.12px] tracking-[1.5%] text-[#ACABC3]">
+              <span className="font-[500] text-[10px] lg:text-[16px] sm:leading-[21.12px] tracking-[1.5%] text-[#ACABC3]">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu eget
                 feugiat habitasse nec, bibendum condimentum.
               </span>
@@ -56,7 +87,7 @@ export default function Section5() {
                 />
               </svg>
 
-              <p className="font-[500] text-[7px] sm:text-[8px] md:text-[10px] lg:text-[16px] md:leading-[21.12px] tracking-[1.5%] text-[#ACABC3]">
+              <p className="font-[500] text-[10px] lg:text-[16px] sm:leading-[21.12px] tracking-[1.5%] text-[#ACABC3]">
                 Material expose like metals
               </p>
             </div>
@@ -78,7 +109,8 @@ export default function Section5() {
                 />
               </svg>
 
-              <p className="font-[500] text-[7px] sm:text-[8px] md:text-[10px] lg:text-[16px] md:leading-[21.12px] tracking-[1.5%] text-[#ACABC3]">
+             
+              <p className="font-[500] text-[10px] lg:text-[16px] sm:leading-[21.12px] tracking-[1.5%] text-[#ACABC3]">
                 Material expose like metals
               </p>
             </div>
@@ -100,7 +132,7 @@ export default function Section5() {
                 />
               </svg>
 
-              <p className="font-[500] text-[7px] sm:text-[8px] md:text-[10px] lg:text-[16px] md:leading-[21.12px] tracking-[1.5%] text-[#ACABC3]">
+              <p className="font-[500] text-[10px] lg:text-[16px] sm:leading-[21.12px] tracking-[1.5%] text-[#ACABC3]">
                 Material expose like metals
               </p>
             </div>
@@ -122,33 +154,34 @@ export default function Section5() {
                 />
               </svg>
 
-              <p className="font-[500] text-[7px] sm:text-[8px] md:text-[10px] lg:text-[16px] md:leading-[21.12px] tracking-[1.5%] text-[#ACABC3]">
+              <p className="font-[500] text-[10px] lg:text-[16px] sm:leading-[21.12px] tracking-[1.5%] text-[#ACABC3]">
                 Material expose like metals
               </p>
             </div>
           </div>
-          <div className="flex gap-3 items-center">
-            <button className="md:mt-6 mt-3 text-[5px] clxs:text-[9px] w-[80px] h-[18px] sm:w-[120px] sm:h-[28px] sl:w-[163px] sl:h-[50px] text-white bg-[#FB2E86] rounded-[2px] hover:bg-[#d73078] sl:text-[17px] leading-[19.92px] tracking-[2%] hover:shadow-black hover:shadow-sm">
+          <div className="flex gap-3 items-center ">
+            <button className="md:mt-6 mt-3 text-[12px]  w-[120px] h-[28px] sl:w-[163px] sl:h-[50px] text-white bg-[#FB2E86] rounded-[2px] hover:bg-[#d73078] sl:text-[17px] leading-[19.92px] tracking-[2%] hover:shadow-black hover:shadow-sm">
               Add To Cart
             </button>
           </div>
         </div>
-        <div className="relative flex justify-center items-center overflow-hidden">
+        <div className="relative mt-7 sm:mt-0 flex justify-center items-center overflow-hidden">
           {/* Pink Circle */}
           <div
-            className="h-[130px] w-[125px] sm:h-[150px] sm:w-[150px] md:h-[200px] md:w-[200px] 
+            className="h-[200px] w-[200px] 
                   lg:h-[250px] lg:w-[250px] clg:h-[300px] clg:w-[300px] 
                   bg-pink-100 rounded-full z-0"
           ></div>
 
           {/* Image */}
-          <Image
-            src={image1}
-            alt="image"
-            className="absolute w-[90%] h-[90%] md:w-[100%] md:h-[100%] object-cover z-10"
+          <img
+            src={item.imageURL}
+            alt={item.name}
+            className="absolute  w-[100%] h-[100%] object-cover z-10"
           />
         </div>
       </div>
+      ))}
     </div>
   );
 }

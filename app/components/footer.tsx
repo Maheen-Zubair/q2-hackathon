@@ -1,8 +1,37 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import logo from "../../public/hecko(footer).png";
 import icon from "../../public/Group 205.png";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
+
+const formSchema = z.object({
+  email: z.string().email({
+    message: "Please enter a valid email address.",
+  }),
+});
 export default function Footer() {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: "",
+    },
+  });
+
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(values);
+  }
   return (
     <div className="main relative flex lg:flex-row flex-col justify-center items-center bg-[#EEEFFB] pt-14 pb-14 w-screen text-[#8A8FB9]">
       <div className="sub flex lg:flex-row flex-col justify-center items-center lg:h-[326px] w-3/4  gap-10 ">
@@ -15,15 +44,38 @@ export default function Footer() {
                 className=" w-[70px] h-[20px]  sl:w-[98px] sl:h-[30px] "
               />
             </div>
-            <div className="relative w-[70%] lg:w-full flex justify-center items-center">
-              <input
-                type="text"
-                placeholder="Enter Email Address"
-                className="h-[44px] w-full border-none bg-[#FFFFFF] relative  rounded-[3px] border-[1.5px] border-[#FAFAFA] placeholder:font-normal placeholder:text-[16px] placeholder:text-[#8A8FB9] placeholder:leading-[24px]  pr-10 pl-2"
-              />
-              <div className="absolute top-1 bottom-1  right-1 flex text-[#EEEFFB] justify-center items-center w-[35%] bg-[#FB2E86] rounded-[3px] hover:bg-[#d73078] ">
-                <div className="">Sign Up</div>
-              </div>
+            <div className="relative w-[70%] lg:w-full flex justify-start">
+              <Form {...form}>
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="relative "
+                >
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <>
+                        <FormItem>
+                          <FormControl>
+                            <input
+                              placeholder="Enter Email Address"
+                              {...field}
+                              className="h-[44px] w-full border-none bg-[#FFFFFF] relative rounded-[3px] border-[1.5px] border-[#FAFAFA] placeholder:font-normal placeholder:text-[16px] placeholder:text-[#8A8FB9] placeholder:leading-[24px] pr-10 pl-2"
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      </>
+                    )}
+                  />
+                  <Button
+                    className="absolute top-1 bottom-1 right-1 flex text-[#EEEFFB] justify-center items-center w-[35%] bg-[#FB2E86] rounded-[3px] hover:bg-[#d73078]"
+                    type="submit"
+                  >
+                    Sign Up
+                  </Button>
+                </form>
+              </Form>
             </div>
             <h3 className="text-sm ">Contact Info</h3>
             <h2 className="text-sm ">
@@ -68,9 +120,7 @@ export default function Footer() {
               <h1 className=" text-sm ">Blog</h1>
               <h2 className="text-sm ">Category</h2>
               <h3 className="text-sm ">Pre-Built Pages</h3>
-              <h1 className=" text-sm ">
-                Visual Composer Elements
-              </h1>
+              <h1 className=" text-sm ">Visual Composer Elements</h1>
               <h1 className=" text-sm ">WooCommerce Pages</h1>
             </div>
           </div>
@@ -101,7 +151,7 @@ export default function Footer() {
               stroke-linejoin="round"
             />
           </svg>
-          <p className="">Copyright Rimel 2022. All right reserved</p>
+          <p>Copyright Rimel 2022. All right reserved</p>
         </div>
 
         <Image

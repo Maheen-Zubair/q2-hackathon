@@ -4,7 +4,6 @@ import Header from "./components/header";
 import Footer from "./components/footer";
 import { Josefin_Sans } from "@next/font/google";
 
-
 const josefinSans = Josefin_Sans({
   subsets: ["latin"], 
   weight: ["400", "700"], 
@@ -25,9 +24,9 @@ export default function RootLayout({
       <body
         className={`${josefinSans.className} antialiased`}
       >
-        <Header/>
+        {/* <Header/> */}
         {children}
-        <Footer/>
+
       </body>
     </html>
   );

@@ -9,9 +9,12 @@ import Section7 from "./section7/page";
 import Section8 from "./section8/page";
 import Section9 from "./section9/page";
 import Section from "./section/page";
+import Header from "./components/header";
+import Footer from "./components/footer";
 export default function Home() {
   return (
     <div>
+      <Header />
       {/* -----------main slide:"New Furniture Collection Trends in 2020"-------- */}
       <Section1 />  
       <Section2 />
@@ -40,7 +43,7 @@ export default function Home() {
       
       {/* -----Leatest Blog------- */}
       <Section9 /> 
-     
+     <Footer />
     </div>
   );
 }

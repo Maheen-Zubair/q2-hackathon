@@ -1,15 +1,57 @@
+"use client";
+import { useEffect, useState } from "react";
+import { client } from "@/sanity/lib/client";
 import Image from "next/image";
 import image1 from "/public/image 1162.png";
-import image2 from "/public/image 1161.png";
-import img1 from "/public/image 30.png";
-import img2 from "/public/image 19.png";
-import img3 from "/public/image 28.png";
 
+const GetProductData = () => {
+  const res =
+    client.fetch(`*[_type == "product" && "executiveSeat" in tags]{
+  name,
+  price,
+  "imageURL": image.asset->url,
+   discountPercentage,
+  }`);
+  return res;
+};
+const GetProductData2 = () => {
+  const res =
+    client.fetch(`*[_type == "product" && "wooden" in tags]{
+  name,
+  price,
+   "imageURL": image.asset->url,
+   discountPercentage,
+  }`);
+  return res;
+};
+
+interface Product {
+  name: string;
+  image: string;
+  price: number;
+  discountPercentage:number
+}
+  
 export default function Section() {
+   const [product, setProduct] = useState<Product[]>([]);
+   const [product2, setProduct2] = useState<Product[]>([]);
+
+      useEffect(() => {
+        async function fetchCategoryData() {
+          const categoryData:any = await GetProductData();
+          setProduct(categoryData);
+        }
+        async function fetchCategoryData2() {
+          const categoryData2:any = await GetProductData2();
+          setProduct2(categoryData2);
+        }
+        fetchCategoryData();
+        fetchCategoryData2();
+      }, []);
   return (
-    <div className="flex justify-center items-center  elg:ml-[10%]">
+    <div className="flex justify-center items-center  elg:ml-[10%] overflow-hidden">
       <div className="grid lg:grid-cols-3 grid-cols-1 gap-x-10 justify-center  gap-y-6 ml-5 lg:ml-0">
-        <div className="xl:w-[420px] lg:w-[375px] lg:h-[240px] xl:h-[270px] w-[90%] h-[200px]  bg-[#FFF6FB] flex flex-col justify-center px-8 lg:gap-2 shadow-sm shadow-gray-300">
+        <div className="xl:w-[420px] lg:w-full lg:h-[240px] xl:h-[270px] w-[90%] h-[200px]  bg-[#FFF6FB] flex flex-col justify-center px-8 lg:gap-2 shadow-sm shadow-gray-300">
           <h1 className="text-[#151875] font-semibold lg:text-[26px] text-[16px] md:text-[23px]">
             23% off in all products
           </h1>
@@ -26,10 +68,12 @@ export default function Section() {
             ></Image>
           </div>
         </div>
-        <div className="xl:w-[420px] lg:w-[375px] lg:h-[240px] xl:h-[270px] w-[90%] h-[200px] bg-[#EEEFFB] flex flex-col justify-center px-8 shadow-sm shadow-gray-300">
+        {product2.map((item: any,index) => (
+
+        <div key={index} className="xl:w-[420px] lg:w-[375px] lg:h-[240px] xl:h-[270px] w-[90%] h-[200px] bg-[#EEEFFB] flex flex-col justify-center px-8 shadow-sm shadow-gray-300">
           <div className="flex flex-col justify-between lg:gap-2">
             <h1 className="text-[#151875] font-semibold lg:text-[26px] text-[16px] md:text-[23px]">
-              23% off in all products
+              {item.discountPercentage}% off in all products
             </h1>
             <p className="lg:text-[16px] text-[8px] md:text-[14px] text-[#FB2E86] underline ">
               View Collection
@@ -37,52 +81,33 @@ export default function Section() {
           </div>
 
           <div className="flex justify-end">
-            <Image
-              src={image2}
-              alt="image"
+            <img
+              src={item.imageURL}
+              alt={item.name}
               height={173}
               width={312}
-            ></Image>
+            ></img>
           </div>
         </div>
-        <div className="xl:w-[420px] lg:w-[375px] lg:h-[240px] xl:h-[270px] w-[90%] h-[200px] bg-white flex flex-col justify-between shadow-sm shadow-gray-300">
+        ))}
+        <div className="xl:w-[420px] lg:w-full lg:h-[240px] xl:h-[270px] w-[90%] h-[200px] bg-white flex flex-col justify-between shadow-sm shadow-gray-300">
+        {product.map((item: any,index) => (
+
           <div className="lg:h-[74px] lg:w-[267px] gap-2 flex items-center justify-center">
             <div className="lg:w-[107px] lg:h-[74px] bg-[#F5F6F8] flex justify-center items-center">
-              <Image width={64} height={71} src={img1} alt="image"></Image>
+              <img width={64} height={71} src={item.imageURL} alt="image"></img>
             </div>
             <div className="lg:w-[151px] flex flex-col">
               <h1 className="lg:text-[16px] text-[13px] font-semibold text-[#151875]">
-                Executive Seat chair
+                {item.name}
               </h1>
               <p className="lg:text-[12px] text-[9px]  text-[#151875]">
-                $32.00
+                ${item.price}
               </p>
             </div>
           </div>
-
-          <div className="lg:h-[74px] lg:w-[267px] gap-2 flex items-center justify-center">
-            <div className="lg:w-[107px] lg:h-[74px] bg-[#F5F6F8] flex justify-center items-center">
-              <Image width={64} height={71} src={img2} alt="image"></Image>
-            </div>
-            <div className="  lg:w-[151px] flex flex-col">
-              <h1 className="lg:text-[16px] text-[13px] font-semibold text-[#151875]">
-                Executive Seat chair
-              </h1>
-              <p className="lg:text-[12px] text-[9px] text-[#151875]">$32.00</p>
-            </div>
-          </div>
-
-          <div className="lg:h-[74px] lg:w-[267px] gap-2 flex items-center justify-center">
-            <div className="lg:w-[107px] lg:h-[74px] bg-[#F5F6F8] flex justify-center items-center">
-              <Image width={64} height={71} src={img3} alt="image"></Image>
-            </div>
-            <div className=" lg:w-[151px] flex flex-col">
-              <h1 className="lg:text-[16px] text-[13px] font-semibold text-[#151875]">
-                Executive Seat chair
-              </h1>
-              <p className="lg:text-[12px] text-[9px] text-[#151875]">$32.00</p>
-            </div>
-          </div>
+        ))}
+        
         </div>
       </div>
     </div>

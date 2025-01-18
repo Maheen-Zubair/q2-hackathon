@@ -1,11 +1,21 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import logo from "../../public/Hekto.png";
 import Link from "next/link";
-
-
+import { useState } from "react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "../../components/ui/select";
 export default function Header() {
-  
+  const [isVisible, setIsVisible] = useState(false);
+  const handleVisibility = () => {
+    setIsVisible((isVisible) => !isVisible);
+  };
   return (
     <div>
       {/* -----------Header 1------------ */}
@@ -125,8 +135,7 @@ export default function Header() {
 
             <div className="wishlistIcon flex justify-center items-center s:gap-1">
               <div className="text    text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-base leading-none">
-              <Link href={"/notFound"}>              Wishlist
-              </Link>
+                <Link href={"/notFound"}> Wishlist</Link>
               </div>
               <svg
                 width="16"
@@ -186,6 +195,7 @@ export default function Header() {
           {/* Logo */}
           <div className="logo font-bold flex text-md leading-[24px] items-center tracking-[3%] lg:text-[24px]">
             <svg
+              onClick={handleVisibility}
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -199,6 +209,199 @@ export default function Header() {
                 d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
               />
             </svg>
+            {isVisible && (
+            <div className="absolute z-10 top-0 left-0 flex flex-col h-screen bg-gray-200 text-white xs:w-1/2 sm:w-1/4 shadow-black shadow-xl ">
+              <div className="bg-[#6529b3] flex items-center justify-between overflow-y-hidden">
+                
+                <h1 className=" p-4  text-sm xmd:text-lg xxmd:text-md  s:text-2xl font-bold md:pr-3">
+                    Heckto
+                  </h1>
+                <svg
+                  onClick={handleVisibility}
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  className="size-8 "
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                  />
+                </svg></div>
+                <div className="bg-white h-screen p-4 shadow-lg">
+                    {/* Navigation Heading */}
+                    <div className="flex justify-center">
+                      <h1 className="mt-2 font-bold text-[#101750] text-md xxmd:text-xl">
+                        Explore Menu
+                      </h1>
+                    </div>
+  
+                    {/* Navigation Links */}
+                    <ul className="text-gray-600 font-semibold text-sm xxmd:text-md flex flex-col mt-3">
+                      <li>
+                        <Link
+                          href={"/"}
+                          className="h-8 pl-4 mt-1 block w-full hover:bg-gray-200"
+                        >
+                          Home
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href={"/"}
+                          className="h-8 pl-4 block w-full hover:bg-gray-200"
+                        >
+                          Pages
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href={"/gridDefault"}
+                          className="h-8 pl-4 block w-full hover:bg-gray-200"
+                        >
+                          Shop Products
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href={"/blog"}
+                          className="h-8 pl-4 block w-full hover:bg-gray-200"
+                        >
+                          Blogs
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href={"/shoplist"}
+                          className="h-8 pl-4 block w-full hover:bg-gray-200"
+                        >
+                          Shop
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          href={"/contact"}
+                          className="h-8 pl-4 block w-full hover:bg-gray-200"
+                        >
+                          Contact
+                        </Link>
+                      </li>
+                    </ul>
+  
+                    <hr className="border-gray-400 mt-4" />
+
+                    <div className="flex justify-center">
+                        <h1 className="mt-2 font-bold text-[#101750] text-md xxmd:text-xl">
+                          Shop by Category
+                        </h1>
+                      </div>
+    
+                      <div className="mt-3 space-y-1">
+                        <Select>
+                          <SelectTrigger className="sm:h-9 text-gray-600 font-semibold text-sm xxmd:text-md border-none hover:bg-gray-200 px-4 rounded ">
+                            <SelectValue placeholder="Living Room Chairs" />
+                          </SelectTrigger>
+                          <SelectContent className=" bg-white">
+                            <SelectItem value="recliners">Recliners</SelectItem>
+                            <SelectItem value="armchairs">Armchairs</SelectItem>
+                            <SelectItem value="rocking">Rocking Chairs</SelectItem>
+                          </SelectContent>
+                        </Select>
+    
+                        {/* Sofas */}
+                        <Select>
+                          <SelectTrigger className="sm:h-9 text-gray-600 font-semibold text-sm xxmd:text-md border-none hover:bg-gray-200 px-4 rounded">
+                            <SelectValue placeholder="Sofas" />
+                          </SelectTrigger>
+                          <SelectContent className=" bg-white">
+                            <SelectItem value="sectional">
+                              Sectional Sofas
+                            </SelectItem>
+                            <SelectItem value="sleeper" className="">Sleeper Sofas</SelectItem>
+                            <SelectItem value="loveseat">Loveseats</SelectItem>
+                          </SelectContent>
+                        </Select>
+    
+                        {/* Dining Chairs */}
+                        <Select>
+                          <SelectTrigger className="sm:h-9 text-gray-600 font-semibold text-sm xxmd:text-md border-none  hover:bg-gray-200 px-4 rounded">
+                            <SelectValue placeholder="Dining Chairs" />
+                          </SelectTrigger>
+                          <SelectContent className=" bg-white">
+                            <SelectItem value="wooden">Wooden Chairs</SelectItem>
+                            <SelectItem value="upholstered">
+                              Upholstered Chairs
+                            </SelectItem>
+                            <SelectItem value="metal">Metal Chairs</SelectItem>
+                          </SelectContent>
+                        </Select>
+    
+                        {/* Office Chairs */}
+                        <Select>
+                          <SelectTrigger className="sm:h-9 text-gray-600 font-semibold text-sm xxmd:text-md border-none hover:bg-gray-200 px-4 rounded">
+                            <SelectValue placeholder="Office Chairs" />
+                          </SelectTrigger>
+                          <SelectContent className=" bg-white">
+                            <SelectItem value="ergonomic">
+                              Ergonomic Chairs
+                            </SelectItem>
+                            <SelectItem value="executive">
+                              Executive Chairs
+                            </SelectItem>
+                            <SelectItem value="task">Task Chairs</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+    
+                      <hr className="border-gray-400 mt-4" />
+
+                      {/* Additional Links Section */}
+                      <div className="flex justify-center">
+                        <h1 className="mt-2 font-bold text-[#101750] text-md xxmd:text-xl">
+                          Quick Links
+                        </h1>
+                      </div>
+    
+                      <ul className="text-gray-600  font-semibold mt-3 flex flex-col gap-2">
+                        <li>
+                          <Link
+                            href="#deals"
+                            className="h-8 pl-4 block text-sm xxmd:text-md w-full hover:bg-gray-200"
+                          >
+                            Deals & Offers
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href={"/FAQ"}
+                            className="h-8 pl-4 text-sm xxmd:text-md block w-full hover:bg-gray-200"
+                          >
+                            Customer Service
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href={"/hecto-demo"}
+                            className="h-8 pl-4 text-sm xxmd:text-md block w-full hover:bg-gray-200"
+                          >
+                            Order Tracking
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            href={"/shoppingCart"}
+                            className="h-8 pl-4 text-sm xxmd:text-md block w-full hover:bg-gray-200"
+                          >
+                            Your Cart
+                          </Link>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+          )}
             <Image
               src={logo}
               alt="logo"
@@ -208,27 +411,30 @@ export default function Header() {
 
           {/* Options */}
           <div className="options hidden lg:flex elg:flex text-[#0D0E43] elg:w-auto  font-md h-[24px] gap-4 clg:gap-[20px]  items-center">
+           <div className=""></div>
             <select
               name="Pages"
               id="Pages"
               className="bg-transparent hover:text-[#FB2E86] text-[10px] md:text-[12px] lg:text-[14px] clg:text-base  border border-gray-300 rounded-sm px-2 focus:outline-none"
+              onChange={(e) => {
+                const selectedPage = e.target.value;
+                if (selectedPage) {
+                  window.location.href = selectedPage;
+                }
+              }}
             >
-              <option value="eng" className="bg-[#FB2E86] text-white">
-                Home
-              </option>
-              <option value="aboutUs" className="bg-[#FB2E86] text-white">
-                About Us
-              </option>
-              <option value="hektoDemo" className="bg-[#FB2E86] text-white">
+          <option value="/"  className="bg-[#FB2E86] text-white">Home</option>             
+              <option value="/aboutUs" className="bg-[#FB2E86] text-white">About Us</option>
+              <option value="/hecto-demo" className="bg-[#FB2E86] text-white">
                 Hekto Demo
               </option>
-              <option value="urd" className="bg-[#FB2E86] text-white">
+              <option value="/orderCompleted" className="bg-[#FB2E86] text-white">
                 Order Completed
               </option>
-              <option value="notFound" className="bg-[#FB2E86] text-white">
+              <option value="/notFound" className="bg-[#FB2E86] text-white">
                 404 Not Found
               </option>
-              <option value="FAQ" className="bg-[#FB2E86] text-white">
+              <option value="/FAQ" className="bg-[#FB2E86] text-white">
                 FAQ
               </option>
             </select>

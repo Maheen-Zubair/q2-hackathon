@@ -8,7 +8,7 @@ import Link from "next/link";
 export default function Section9() {
   return (
     <div className=" flex  pt-18 pb-24 justify-center gap-9 flex-col items-center">
-        <h1 className="font-semibold text-[#151875] text-[20px] sm:[30px] md:text-[38px] lg:text-[42px] leading-[49.22px] ">
+        <h1 className="font-semibold text-[#151875] text-[30px] md:text-[38px] lg:text-[42px] leading-[49.22px] ">
         Leatest Blog
         </h1>
         <div className="subContainer grid grid-cols-1 sm:grid-cols-2 eelg:grid-cols-3 gap-[30px]  xs:w-[60%] eelg:w-[75%] ">
