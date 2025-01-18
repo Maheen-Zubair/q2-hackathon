@@ -12,7 +12,6 @@
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
     "@next/font": "^14.2.15",
-<<<<<<< HEAD
     "@radix-ui/react-label": "^2.1.1",
     "@radix-ui/react-select": "^2.1.4",
     "@radix-ui/react-slot": "^1.1.1",
@@ -24,18 +23,15 @@
     "clsx": "^2.1.1",
     "dotenv": "^16.4.7",
     "lucide-react": "^0.469.0",
-=======
     "@radix-ui/react-dropdown-menu": "^2.1.4",
     "@radix-ui/react-select": "^2.1.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.471.1",
->>>>>>> 456cccb6cbe58d0fd4f5f32bb2840f8022bec79a
     "next": "14.2.16",
     "next-sanity": "^9.8.32",
     "react": "^18",
     "react-dom": "^18",
-<<<<<<< HEAD
     "react-hook-form": "^7.54.2",
     "react-slick": "^0.30.3",
     "sanity": "^3.68.3",
@@ -45,11 +41,6 @@
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.24.1"
-=======
-    "swiper": "^11.2.1",
-    "tailwind-merge": "^2.6.0",
-    "tailwindcss-animate": "^1.0.7"
->>>>>>> 456cccb6cbe58d0fd4f5f32bb2840f8022bec79a
   },
   "devDependencies": {
     "@types/node": "^20",
