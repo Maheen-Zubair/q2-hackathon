@@ -27,7 +27,7 @@ const GetProductData2 = () => {
 
 interface Product {
   name: string;
-  image: string;
+  imageURL: string;
   price: number;
   discountPercentage:number
 }
@@ -68,7 +68,7 @@ export default function Section() {
             ></Image>
           </div>
         </div>
-        {product2.map((item: any,index) => (
+        {product2.map((item: Product,index) => (
 
         <div key={index} className="xl:w-[420px] lg:w-[375px] lg:h-[240px] xl:h-[270px] w-[90%] h-[200px] bg-[#EEEFFB] flex flex-col justify-center px-8 shadow-sm shadow-gray-300">
           <div className="flex flex-col justify-between lg:gap-2">
@@ -91,7 +91,7 @@ export default function Section() {
         </div>
         ))}
         <div className="xl:w-[420px] lg:w-full lg:h-[240px] xl:h-[270px] w-[90%] h-[200px] bg-white flex flex-col justify-between shadow-sm shadow-gray-300">
-        {product.map((item: any,index) => (
+        {product.map((item: Product,index) => (
 
           <div key={index} className="lg:h-[74px] lg:w-[267px] gap-2 flex items-center justify-center">
             <div className="lg:w-[107px] lg:h-[74px] bg-[#F5F6F8] flex justify-center items-center">

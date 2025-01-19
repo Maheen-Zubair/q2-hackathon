@@ -1,9 +1,10 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import logo from "../../public/Hekto.png";
 import Link from "next/link";
 import { useState } from "react";
+
 import {
   Select,
   SelectContent,
@@ -11,11 +12,38 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../components/ui/select";
+import { client } from "@/sanity/lib/client";
 export default function Header() {
   const [isVisible, setIsVisible] = useState(false);
   const handleVisibility = () => {
     setIsVisible((isVisible) => !isVisible);
   };
+  const [query, setQuery] = useState("");
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  // Fetch data from Sanity
+  useEffect(() => {
+    const fetchData = async () => {
+      if (query.length > 2) {
+        setLoading(true);
+        const results = await client.fetch(
+          `*[_type == "product" && name match "${query}*"]{
+            _id,
+            name,
+            price,
+            image
+          }`
+        );
+        setData(results);
+        setLoading(false);
+      } else {
+        setData([]);
+      }
+    };
+
+    fetchData();
+  }, [query]);
   return (
     <div>
       {/* -----------Header 1------------ */}
@@ -457,9 +485,22 @@ export default function Header() {
 
           {/* Search */}
           <div className="search flex ml-10 s:ml-44 elg:ml-56">
+            <div>
+
+            </div>
+            <Select>
+              <SelectTrigger className=" sm:h-9 z-0 hidden xxmd:flex w-auto h-6 rounded-tr-none rounded-br-none  border-[#E7E6EF] text-gray-800">
+                <SelectValue placeholder="All" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="light">Chair</SelectItem>
+                <SelectItem value="dark">Sofa</SelectItem>
+              </SelectContent>
+            </Select>
             <input
               type="text"
               placeholder="Search..."
+              onChange={(e) => setQuery(e.target.value)}
               className="h-6 w-20 sm:h-9 pl-2 xxmd:w-24 xmd:w-28 md:w-64 s:w-40 text-gray-800 border-[#E7E6EF] border-2 border-r-0 placeholder:text-xs focus:ring-2 focus:ring-[#FB2E86] focus:outline-none"
             />
             <button className="h-6 w-6 bg-[#FB2E86] flex sm:h-9 sm:w-9 items-center justify-center">

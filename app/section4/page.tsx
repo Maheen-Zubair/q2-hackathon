@@ -11,8 +11,8 @@ import sale from "../../public/Group 27.png";
 export const GetProductData = () => {
   const res =
     client.fetch(`*[_type == "product" && "latest" in tags]{
-  name,
-  price,
+   name,
+   price,
    "imageURL": image.asset->url,
    discountPercentage,
   }`);
