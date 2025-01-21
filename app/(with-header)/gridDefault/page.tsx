@@ -2,13 +2,15 @@
 import { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
 import Section8 from "../../section8/page";
+import Link from "next/link";
 const GetProductData = () => {
   const res =
-    client.fetch(`*[_type == "product" && "allProducts" in tags]{
+    client.fetch(`*[_type == "product" ]{
   name,
   price,
    "imageURL": image.asset->url,
    discountPercentage,
+   _id,
   }`);
   return res;
 };
@@ -17,7 +19,8 @@ interface Product {
   name: string;
   imageURL: string;
   price: number;
-  discountPercentage:number
+  discountPercentage:number;
+  _id:number;
 }
 
 export default function Grid() {
@@ -46,7 +49,7 @@ export default function Grid() {
       </div>
 
       <div className=" sm:mt-24 mt-10 sm:mb-20 mb-10 xl:w-full flex lg:flex-row flex-col gap-3 lg:gap-16 justify-center items-center ">
-        <div className="">
+        <div >
           <h1 className="text-[#151875] lg:text-[22px] text-[15px] font-semibold">
             Ecommerce Acceories & Fashion item
           </h1>
@@ -87,11 +90,13 @@ export default function Grid() {
       <div className="flex justify-center items-center ">
         <div className=" grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 lg:gap-y-8   px-10 md:pl-40 lg:pl-10 pt-10 gap-x-6 gap-y-10">
           {product.map((item:Product,index) => (
-            <div key={index} className="xl:h-[363px] xl:w-[270px] w-[90%] md:h-[300px]  md:w-[190px] flex flex-col justify-center items-center lg:gap-2 gap-1">
+            <div key={index} className="xl:h-[363px] xl:w-[270px] w-[90%] md:h-[300px] shadow-md hover:shadow-lg  md:w-[190px] flex flex-col justify-center items-center lg:gap-2 gap-1">
+                     <Link href={`/gridDefault/${item._id}`}>
+
               <div className="xl:h-[280px] xl:w-[270px] md:h-[200px] md:w-[190px]  bg-[#F6F7FB] flex justify-center items-center">
                 <img
-                  width={150}
-                  height={150}
+                  width={180}
+                  height={180}
                   src={item.imageURL}
                   alt={item.name}
                 ></img>
@@ -108,6 +113,7 @@ export default function Grid() {
                 <p className="text-[#111C85]">${item.price}</p>
                 <p className="text-[#FF2AAA]">{item.discountPercentage}%</p>
               </div>
+              </Link>
             </div>
           ))}
         </div>

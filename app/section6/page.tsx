@@ -4,10 +4,12 @@ import { client } from "@/sanity/lib/client";
 import React from "react";
 import Image from "next/image";
 import divSlide from "../../public/hhhhh.png";
+import Link from "next/link";
 
 const GetProductData = () => {
   const res =
     client.fetch(`*[_type == "product" && "top" in tags]{
+      _id,
   name,
   price,
    "imageURL": image.asset->url,
@@ -17,6 +19,7 @@ const GetProductData = () => {
 };
 
 interface Product {
+  _id:number
   name: string;
   imageURL: string;
   price: number;
@@ -33,6 +36,20 @@ export default function Section6() {
       
           fetchCategoryData();
         }, []);
+        const addToCart = (product: Product) => {
+          const storedCart = localStorage.getItem('cart');
+          const cart = storedCart ? JSON.parse(storedCart) : [];
+        
+          const existingProductIndex = cart.findIndex((item: Product) => item._id === product._id);
+          if (existingProductIndex !== -1) {
+            cart[existingProductIndex].quantity += 1;
+          } else {
+            const productWithQuantity = { ...product, quantity: 1 };
+            cart.push(productWithQuantity);
+          }
+          localStorage.setItem('cart', JSON.stringify(cart));
+          alert(`${product.name} has been added to the cart!`);
+        };
   return (
     <div>
       <div className="flex flex-col text-[#151875] pt-24 pb-24 items-center  gap-[10px] md:gap-[20px]">
@@ -43,6 +60,8 @@ export default function Section6() {
         {product.map((item: Product,index) => (
 
           <div key={index} className="blog group w-[269px] h-[345px] ">
+          <Link href={`/section6/${item._id}`}>
+
             <div className="part1 h-[269px] w-[269px] relative flex justify-center items-center bg-[#F6F7FB] rounded-full  ">
               <img src={item.imageURL} alt={item.name} height={180} width={180} />
               <div className="w-[94px] hidden group-hover:flex hover:shadow-black hover:shadow-sm  h-[29px] absolute top-[219px] left-[88px] rounded-[2px] justify-center items-center  text-[12px] bg-[#08D15F] ">
@@ -54,6 +73,7 @@ export default function Section6() {
               <h1 className=" font-semibold">{item.name}</h1>
               <h1 className="font-semibold">${item.price}</h1>
             </div>
+            </Link>
           </div>
         ))}
         </div>

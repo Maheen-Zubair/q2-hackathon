@@ -43,11 +43,31 @@ export default {
       type: 'boolean',
       title: 'Is Featured Product',
     },
+
     {
       name: 'stockLevel',
       type: 'number',
       title: 'Stock Level',
       validation: (Rule: any) => Rule.min(0).error('Stock level must be a positive number.'),
+    },
+    {
+      name: 'quantity',
+      type: 'number',
+      title: 'Quantity',
+      validation: (Rule: any) => Rule.min(0).error('Stock level must be a positive number.'),
+    },
+    {
+      name: "reviews",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            { name: "username", type: "string" , title: "UserName" },
+            { name: "reviewText", type: "text", title: "Review Text"},
+          ],
+        },
+      ],
     },
     {
       name: 'category',
@@ -62,7 +82,7 @@ export default {
       validation: (Rule: any) => Rule.required().error('Category is required'),
     },
     {name:"tags",
-      tittle:"Tags",
+      title:"Tags",
       type:"array",
       of: [{type:"string"}],
       options:{

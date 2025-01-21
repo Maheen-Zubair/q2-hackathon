@@ -2,10 +2,12 @@
 import { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
 import React from "react";
+import Link from "next/link";
 
 const GetProductData = () => {
   const res =
     client.fetch(`*[_type == "product" && "discount" in tags]{
+      _id,
   name,
   price,
    "imageURL": image.asset->url,
@@ -15,6 +17,7 @@ const GetProductData = () => {
 };
 
 interface Product {
+  _id:number;
   name: string;
   imageURL: string;
   price: number;
@@ -31,6 +34,20 @@ export default function Section5() {
     
         fetchCategoryData();
       }, []);
+      const addToCart = (product: Product) => {
+        const storedCart = localStorage.getItem('cart');
+        const cart = storedCart ? JSON.parse(storedCart) : [];
+      
+        const existingProductIndex = cart.findIndex((item: Product) => item._id === product._id);
+        if (existingProductIndex !== -1) {
+          cart[existingProductIndex].quantity += 1;
+        } else {
+          const productWithQuantity = { ...product, quantity: 1 };
+          cart.push(productWithQuantity);
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(`${product.name} has been added to the cart!`);
+      };
   return (
     <div className="mainContainer pt-24 max-w-full overflow-hidden bg-white flex flex-col justify-center items-center">
       <link
@@ -56,6 +73,7 @@ export default function Section5() {
       {product.map((item: Product,index) => (
 
       <div key={index} className="subContainer sm:flex-row flex-col pb-8 justify-center items-center lg:w-[60%] md:w-[70%] w-[80%] h-full sm:[300px] md:h-[480px] lg:h-[597px] flex bg-white ">
+        
         <div className="sm:w-[50%] flex flex-col md:gap-6">
           <h1 className="text-[#151875] font-bold text-[28px] lg:text-[35px] md:leading-[46.2px] tracking-[1.5%]">
            {item.discountPercentage}% Discount Of All Products
@@ -160,13 +178,16 @@ export default function Section5() {
             </div>
           </div>
           <div className="flex gap-3 items-center ">
-            <button className="md:mt-6 mt-3 text-[12px]  w-[120px] h-[28px] sl:w-[163px] sl:h-[50px] text-white bg-[#FB2E86] rounded-[2px] hover:bg-[#d73078] sl:text-[17px] leading-[19.92px] tracking-[2%] hover:shadow-black hover:shadow-sm">
+            <button  onClick={() => addToCart(item)} className="md:mt-6 mt-3 text-[12px]  w-[120px] h-[28px] sl:w-[163px] sl:h-[50px] text-white bg-[#FB2E86] rounded-[2px] hover:bg-[#d73078] sl:text-[17px] leading-[19.92px] tracking-[2%] hover:shadow-black hover:shadow-sm">
               Add To Cart
             </button>
           </div>
         </div>
+        <Link href={`/section5/${item._id}`}>
+
         <div className="relative mt-7 sm:mt-0 flex justify-center items-center overflow-hidden">
           {/* Pink Circle */}
+
           <div
             className="h-[200px] w-[200px] 
                   lg:h-[250px] lg:w-[250px] clg:h-[300px] clg:w-[300px] 
@@ -174,12 +195,14 @@ export default function Section5() {
           ></div>
 
           {/* Image */}
+
           <img
             src={item.imageURL}
             alt={item.name}
             className="absolute  w-[100%] h-[100%] object-cover z-10"
           />
         </div>
+        </Link>
       </div>
       ))}
     </div>

@@ -9,22 +9,28 @@ import image2 from "../../../public/one (2).png";
 import image3 from "../../../public/one (3).png";
 import image4 from "../../../public/one (4).png";
 import Section8 from "@/app/section8/page";
+import Footer from "@/app/components/footer";
+import Header from "@/app/components/header";
 
 interface Product {
   _id: number;
   name: string;
   imageURL: string;
   price: number;
+  discountPercentage:number;
+  category:string;
 
 }
 
 const GetProductData2 = () => {
   const res =
-    client.fetch(`*[_type == "product" && "featured" in tags]{
+    client.fetch(`*[_type == "product" && "latest" in tags]{
       _id,
   name,
   price,
   "imageURL": image.asset->url,
+  discountPercentage,
+  category,
 
   }`);
   return res;
@@ -40,7 +46,11 @@ export default function Detail({ params }: { params: { id: string } }) {
         const productData = categoryData.find(
           (data: Product) => String(data._id) === params.id
         );
-        setProduct(productData);
+        if (productData) {
+          setProduct(productData);
+        } else {
+          console.error("Product not found");
+        }
       } catch (error) {
         console.error("Failed to fetch products:", error);
       }
@@ -50,11 +60,27 @@ export default function Detail({ params }: { params: { id: string } }) {
   }, [params.id]);
 
   if (!usproduct) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>; 
   }
-
+  const addToCart = (product: Product) => {
+    const storedCart = localStorage.getItem('cart');
+    const cart = storedCart ? JSON.parse(storedCart) : [];
+  
+    const existingProductIndex = cart.findIndex((item: Product) => item._id === product._id);
+    if (existingProductIndex !== -1) {
+      cart[existingProductIndex].quantity += 1;
+    } else {
+      const productWithQuantity = { ...product, quantity: 1 };
+      cart.push(productWithQuantity);
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`${product.name} has been added to the cart!`);
+  };
+  
+   
   return (
-    <div className="">
+    <div >
+        <Header/>
     <div className="lg:h-[286px] h-[120px] mt-5 md:h-[220px] w-full bg-[#F6F5FF] flex flex-col items-start justify-center">
          <div className=" flex flex-col items-start justify-center lg:pl-28 pl-10 md:pl-16">
              <h1 className="lg:text-[36px] text-[20px] md:text-[28px] font-bold text-[#101750]">Product Details</h1>
@@ -113,10 +139,10 @@ export default function Detail({ params }: { params: { id: string } }) {
 
            <div className="flex gap-2 sl:gap-4">
              <p className="text-base leading-[29px] text-[#151875] font-semibold ">
-               $32.00
+               ${usproduct.price}
              </p>
              <p className="text-base leading-[29px] line-through text-[#FB2E86] font-semibold">
-               $32.00
+              {usproduct.discountPercentage}%
              </p>
            </div>
            <h1 className="text-base font-semibold ">Color</h1>
@@ -127,7 +153,7 @@ export default function Detail({ params }: { params: { id: string } }) {
          </div>
 
          <div className="flex items-center justify-center gap-6 pt-3 pb-3 sm:pl-2 md:pl-5 lg:pl-7">
-           <div className="text-base leading-[29px] ">Add To cart</div>
+           <div  onClick={() => addToCart(usproduct)} className="text-base leading-[29px] ">Add To cart</div>
            <svg
              width="18"
              height="18"
@@ -143,10 +169,10 @@ export default function Detail({ params }: { params: { id: string } }) {
          </div>
 
          <div className="text-base leading-[29px] sm:pl-2 md:pl-5 lg:pl-7">
-           Categories:
+           Categories: {usproduct.category}
          </div>
          <div className="text-base leading-[29px] sm:pl-2 md:pl-5 lg:pl-7">
-           Tags
+           Tags: Latest
          </div>
 
          <div className="flex gap-6 items-center sm:pl-2 md:pl-5 lg:pl-7  ">
@@ -378,103 +404,7 @@ export default function Detail({ params }: { params: { id: string } }) {
      </div>
    </div>
    <Section8/>
+   <Footer/>
  </div>
 );
 }
-//     <div>
-//       <div className="lg:h-[286px] h-[120px] mt-5 md:h-[220px] w-full bg-[#F6F5FF] flex flex-col items-start justify-center">
-//         <div className="flex flex-col items-start justify-center lg:pl-28 pl-10 md:pl-16">
-//           <h1 className="lg:text-[36px] text-[20px] md:text-[28px] font-bold text-[#101750]">
-//             Product Details
-//           </h1>
-//           <p className="text-black lg:text-[16px] text-[12px] md:text-[14px]">
-//             Home . Pages <span className="text-[#FB2E86]">. Product Details</span>
-//           </p>
-//         </div>
-//       </div>
-
-//       <div className="flex flex-col justify-center pt-24 pb-24 items-center">
-//         <div className="sl:h-[500px] p-3 w-[90%] clg:w-[75%] flex flex-col sl:flex-row sl:flex bg-[#F6F4FD] ">
-//           <div className="part1 flex gap-3 sl:w-[50%] ">
-//             <div className="w-[28%] justify-center items-center flex flex-col gap-3">
-//               <img
-//                 src={usproduct.imageURL}
-//                 alt={usproduct.name}
-//                 width={151}
-//                 height={155}
-//                 className="h-[30%]"
-//               />
-//               <img
-//                 src={usproduct.imageURL}
-//                 alt={usproduct.name}
-//                 width={151}
-//                 height={155}
-//                 className="h-[30%]"
-//               />
-//               <img
-//                 src={usproduct.imageURL}
-//                 alt={usproduct.name}
-//                 width={151}
-//                 height={155}
-//                 className="h-[30%]"
-//               />
-//             </div>
-//             <img
-//               src={usproduct.imageURL}
-//               alt={usproduct.name}
-//               width={375}
-//               height={487}
-//             />
-//           </div>
-
-//           <div className="part2 pt-5 sl:pt-0 pl-4 sl:w-[50%] ">
-//             <div className="flex flex-col gap-3 sl:gap-4 pl-1 sm:pl-2 md:pl-5 lg:pl-7">
-//               <h1 className="text-black font-semibold text-[25x] xmd:text-[28px] lg:text-[36px]">
-//                 {usproduct.name}
-//               </h1>
-//               <div className="flex gap-[10px]">
-//                 <div>
-//                   <Image src={star} width={100} alt="star logo" />
-//                 </div>
-//                 <p className="text-[#151875] lg:text-[14px] font-semibold">(22)</p>
-//               </div>
-
-//               <div className="flex gap-2 sl:gap-4">
-//                 <p className="text-base leading-[29px] text-[#151875] font-semibold ">
-//                   $32.00
-//                 </p>
-//                 <p className="text-base leading-[29px] line-through text-[#FB2E86] font-semibold">
-//                   $32.00
-//                 </p>
-//               </div>
-//               <h1 className="text-base font-semibold">Color</h1>
-//               <p className="text-base text-[#A9ACC6] leading-[29px] ">
-//                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
-//                 tellus porttitor purus, et volutpat sit.
-//               </p>
-//             </div>
-
-//             <div className="flex items-center justify-center gap-6 pt-3 pb-3 sm:pl-2 md:pl-5 lg:pl-7">
-//               <div className="text-base leading-[29px] ">Add To cart</div>
-//               <svg
-//                 width="18"
-//                 height="18"
-//                 viewBox="0 0 18 18"
-//                 fill="none"
-//                 xmlns="http://www.w3.org/2000/svg"
-//               >
-//                 <path
-//                   d="M15.1202 3.45748C14.3239 2.66099 13.2682 2.17673 12.1451 2.09277C11.022 2.00881 9.90605 2.33073 9.00021 2.99998C8.04595 2.29021 6.8582 1.96837 5.67615 2.09926C4.49409 2.23016 3.40554 2.80407 2.62969 3.70542C1.85384 4.60678 1.44832 5.76862 1.49481 6.95699C1.54129 8.14536 2.03632 9.27198 2.88021 10.11L8.46771 15.6975C8.53743 15.7678 8.62038 15.8236 8.71177 15.8617C8.80317 15.8997 8.9012 15.9193 9.00021 15.9193C9.09922 15.9193 9.19725 15.8997 9.28864 15.8617C9.38003 15.8236 9.46299 15.7678 9.53271 15.6975L15.1202 10.11C15.5572 9.67327 15.9039 9.15474 16.1404 8.58401C16.3769 8.01327 16.4986 7.40153 16.4986 6.78373C16.4986 6.16593 16.3769 5.55419 16.1404 4.98346C15.9039 4.41272 15.5572 3.89419 15.1202 3.45748ZM14.0627 9.05248L9.00021 14.1075L3.93771 9.05248C3.49159 8.60451 3.18769 8.03477 3.06998 7.42199C2.95227 6.80921 3.03192 6.18646 3.30003 5.59098C3.56813 4.9955 3.99112 4.4735 4.51021 4.14598C5.0293 3.81846 5.61363 3.69869 6.22288 3.71398C6.83214 3.72927 7.40617 3.97783 7.80421 4.38748C8.20225 4.79713 8.40062 5.27952 8.37621 5.77514C8.35181 6.27077 8.10444 6.73366 7.75654 7.03748C7.40864 7.3413 6.98958 7.42847 6.59021 7.29968C6.19084 7.17089 5.89721 6.84076 5.82668 6.45174C5.75614 6.06272 5.91617 5.65295 6.17979 5.36721L6.17756 5.37373L9.00021 3.00003C9.49995 3.00003 9.90021 3.00003 10.0002 3.00003L9.00021 4.00003"
-//                   fill="#FB2E86"
-//                 ></path>
-//               </svg>
-//             </div>
-//             <div className="text-[#FB2E86] cursor-pointer">
-//               <Image src={shareLogo} alt="share" width={26} />
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }

@@ -13,13 +13,17 @@ import "swiper/css/pagination";
 const GetProductData = () => {
   const res =
     client.fetch(`*[_type == "product" && name == "Luxury Flower Shell Sofa Chair"]{
-   "imageURL": image.asset->url
+   "imageURL": image.asset->url,
+   name,
+   _id,
   }`);
   return res;
 };
 
 interface Product {
   imageURL: string;
+  name:string;
+  _id:number
 }
 
 export default function Section1() {
@@ -32,6 +36,8 @@ export default function Section1() {
 
     fetchCategoryData();
   }, []);
+
+
   return (
     <div>
       <Swiper

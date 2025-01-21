@@ -33,6 +33,22 @@ export default function Section2() {
 
     fetchCategoryData();
   }, []);
+   const addToCart = (product: Product) => {
+         const storedCart = localStorage.getItem('cart');
+         const cart = storedCart ? JSON.parse(storedCart) : [];
+       
+         const existingProductIndex = cart.findIndex((item: Product) => item._id === product._id);
+         if (existingProductIndex !== -1) {
+           cart[existingProductIndex].quantity += 1;
+         } else {
+           const productWithQuantity = { ...product, quantity: 1 };
+           cart.push(productWithQuantity);
+         }
+         localStorage.setItem('cart', JSON.stringify(cart));
+         alert(`${product.name} has been added to the cart!`);
+       };
+      
+     
   return (
     <div>
       <div className="flex flex-col  pt-24 pb-24 items-center  gap-[10px] md:gap-[20px]">
@@ -50,7 +66,7 @@ export default function Section2() {
                 <button className=" hidden group-hover:flex absolute justify-center items-center hover:shadow-black hover:shadow-sm w-[94px] h-[29px] top-[198px] left-[65px] text-white rounded-[2px] text-[12px] font-thin  bg-[#08D15F]">
                   <Link href={`/section2/${item._id}`}>View Details</Link>
                 </button>
-                <div className=" hidden group-hover:flex w-[30px] h-[30px] absolute top-[11px] rounded-full justify-center items-center left-[11px] bg-[#EEEFFB]">
+                <div  onClick={() => addToCart(item)} className=" hidden group-hover:flex w-[30px] h-[30px] absolute top-[11px] rounded-full justify-center items-center left-[11px] bg-[#EEEFFB]">
                   <svg
                     width="15"
                     height="15"

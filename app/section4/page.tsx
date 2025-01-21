@@ -7,6 +7,7 @@ import logo2 from "../../public/cashback 1.png";
 import logo3 from "../../public/premium-quality 1.png";
 import logo4 from "../../public/24-hours-support 1.png";
 import sale from "../../public/Group 27.png";
+import Link from "next/link";
 
 export const GetProductData = () => {
   const res =
@@ -15,6 +16,8 @@ export const GetProductData = () => {
    price,
    "imageURL": image.asset->url,
    discountPercentage,
+   _id,
+   quantity
   }`);
   return res;
 };
@@ -25,10 +28,13 @@ export interface Product {
   price: number;
   discountPercentage:number,
   index:number
+  _id:string
+  quantity:number
 }
   
 export default function Section4() {
   const [product, setProduct] = useState<Product[]>([]);
+
     useEffect(() => {
       async function fetchCategoryData() {
         const categoryData: Product[] = await GetProductData();
@@ -37,6 +43,22 @@ export default function Section4() {
   
       fetchCategoryData();
     }, []);
+    
+    const addToCart = (product: Product) => {
+      const storedCart = localStorage.getItem('cart');
+      const cart = storedCart ? JSON.parse(storedCart) : [];
+    
+      const existingProductIndex = cart.findIndex((item: Product) => item._id === product._id);
+      if (existingProductIndex !== -1) {
+        cart[existingProductIndex].quantity += 1;
+      } else {
+        const productWithQuantity = { ...product, quantity: 1 };
+        cart.push(productWithQuantity);
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${product.name} has been added to the cart!`);
+    };
+   
   return (
     <div className="text-[#151875]">
       <link
@@ -61,13 +83,15 @@ export default function Section4() {
             New Arrival{" "}
           </h1>
         </div>
-
+        
         <div className="subContainer grid grid-cols-1 sm:grid-cols-2  clg:grid-cols-3 gap-5 ">
+        
         {product.map((item: Product,index) => (
 
           <div key={index} className="  w-[280px] sm:w-[300px] llm:w-[365px] group  h-[306px] shadow-md hover:shadow-xl transition-shadow duration-300">
+                        <Link href={`/section4/${item._id}`}>
             <div className="h-[87%] flex relative justify-center items-center  hover:bg-white bg-[#F7F7F7]">
-              <img src={item.imageURL} alt="image1" height={220} width={220} />
+            <img src={item.imageURL} alt="image1" height={220} width={220} />
               <Image
                 src={sale}
                 alt="sale"
@@ -80,6 +104,9 @@ export default function Section4() {
                   viewBox="0 0 15 15"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  onClick={() => addToCart(item)}
+
+                  
                 >
                   <path
                     d="M0.979248 1.36456C0.979248 1.20709 1.0418 1.05607 1.15315 0.944718C1.2645 0.833369 1.41553 0.770813 1.573 0.770813H2.01475C2.76683 0.770813 3.21808 1.27669 3.47537 1.74694C3.64716 2.06044 3.77146 2.42381 3.86883 2.75315C3.89517 2.75107 3.92158 2.75001 3.948 2.74998H13.8422C14.4993 2.74998 14.9743 3.37856 14.7938 4.0111L13.3467 9.0849C13.2169 9.53999 12.9424 9.94041 12.5647 10.2255C12.187 10.5107 11.7267 10.665 11.2535 10.6651H6.54466C6.06768 10.6651 5.60389 10.5085 5.22458 10.2193C4.84527 9.93005 4.57144 9.52428 4.44516 9.06431L3.8435 6.86981L2.846 3.50681L2.84521 3.50048C2.72171 3.0516 2.60612 2.63123 2.43354 2.31773C2.26808 2.01294 2.13508 1.95831 2.01554 1.95831H1.573C1.41553 1.95831 1.2645 1.89576 1.15315 1.78441C1.0418 1.67306 0.979248 1.52204 0.979248 1.36456ZM4.99537 6.58165L5.58992 8.75002C5.70866 9.1791 6.09896 9.47756 6.54466 9.47756H11.2535C11.4686 9.47756 11.6778 9.40747 11.8495 9.27791C12.0212 9.14834 12.1461 8.96636 12.2051 8.75952L13.5802 3.93748H4.21321L4.98429 6.53969L4.99537 6.58165Z"
@@ -132,10 +159,12 @@ export default function Section4() {
                 </div>
               </div>
             </div>
+            </Link>
           </div>
         ))}
        
         </div>
+         
         {/* ---------------what shop offers----------- */}
         <div className=" flex justify-center flex-col mt-10  items-center gap-2 sm:gap-5 md:gap-10">
           <h1 className="font-bold  text-[30px]   md:text-[38px] lg:text-[42px] ">
