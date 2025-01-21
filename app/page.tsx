@@ -25,7 +25,7 @@ export default function Home() {
       {/* ---------Unique Features Of leatest & Trending Poducts------ */}
       <Section3 />
  
- {/* git------- Trending Products ------- */}
+ {/* ------- Trending Products ------- */}
       <Section5b />
       <Section />
 
