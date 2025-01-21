@@ -36,20 +36,7 @@ export default function Section6() {
       
           fetchCategoryData();
         }, []);
-        const addToCart = (product: Product) => {
-          const storedCart = localStorage.getItem('cart');
-          const cart = storedCart ? JSON.parse(storedCart) : [];
-        
-          const existingProductIndex = cart.findIndex((item: Product) => item._id === product._id);
-          if (existingProductIndex !== -1) {
-            cart[existingProductIndex].quantity += 1;
-          } else {
-            const productWithQuantity = { ...product, quantity: 1 };
-            cart.push(productWithQuantity);
-          }
-          localStorage.setItem('cart', JSON.stringify(cart));
-          alert(`${product.name} has been added to the cart!`);
-        };
+       
   return (
     <div>
       <div className="flex flex-col text-[#151875] pt-24 pb-24 items-center  gap-[10px] md:gap-[20px]">
