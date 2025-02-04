@@ -65,9 +65,9 @@ export default function Header() {
         <div className="subContainer xxmd:w-[70%] w-[90%]  flex justify-between">
           <div className="part1 flex  gap-1 xxmd:gap-3 s:gap-8">
             <div className="subPart1 flex items-center justify-center gap-1 s:gap-3">
-                 <SignedIn>
-              <UserButton/>
-            </SignedIn>    
+              <SignedIn>
+                <UserButton />
+              </SignedIn>
               <svg
                 width="14"
                 height="12"
@@ -81,40 +81,16 @@ export default function Header() {
                   fill="white"
                 />
               </svg>
-              <div className="text1   text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-base leading-none ">
+              <div className="text1 text-[7px] md:text-[9px] lg:text-sm clg:text-base leading-none ">
                 mhhasanul@gmail.com
               </div>
             </div>
-
-            {/* <div className="SubPart2 flex items-center justify-center  gap-1 s:gap-3">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="s:h-[16px] s:w-[16px] xxmd:h-[14px] xxmd:w-[14px] h-[12px] w-[12px]"
-              >
-                <path
-                  d="M11.0441 14.666H11.0627C11.4147 14.666 11.7474 14.5274 11.9994 14.2754L13.8074 12.4674C13.8694 12.4055 13.9185 12.332 13.9521 12.2512C13.9856 12.1703 14.0029 12.0836 14.0029 11.996C14.0029 11.9085 13.9856 11.8218 13.9521 11.7409C13.9185 11.66 13.8694 11.5866 13.8074 11.5247L11.1407 8.85804C11.0789 8.79608 11.0054 8.74692 10.9245 8.71338C10.8436 8.67984 10.757 8.66257 10.6694 8.66257C10.5818 8.66257 10.4951 8.67984 10.4143 8.71338C10.3334 8.74692 10.2599 8.79608 10.1981 8.85804L9.1354 9.92071C8.64273 9.77404 7.7234 9.44071 7.14073 8.85804C6.55806 8.27537 6.22473 7.35604 6.07806 6.86337L7.14073 5.80071C7.20269 5.73885 7.25185 5.66538 7.28539 5.5845C7.31893 5.50363 7.3362 5.41693 7.3362 5.32937C7.3362 5.24182 7.31893 5.15512 7.28539 5.07425C7.25185 4.99337 7.20269 4.9199 7.14073 4.85804L4.47406 2.19137C4.34661 2.07108 4.17799 2.00406 4.00273 2.00406C3.82747 2.00406 3.65885 2.07108 3.5314 2.19137L1.72406 3.99937C1.47073 4.25271 1.32806 4.60071 1.3334 4.95604C1.34873 5.90537 1.60006 9.20271 4.19873 11.8014C6.7974 14.4 10.0947 14.6507 11.0441 14.666ZM4.0034 3.60537L5.7274 5.32937L4.8654 6.19137C4.78695 6.2696 4.72933 6.36621 4.69777 6.47241C4.66622 6.5786 4.66173 6.691 4.68473 6.79937C4.70073 6.87604 5.09206 8.69404 6.19873 9.80071C7.3054 10.9074 9.1234 11.2987 9.20006 11.3147C9.30843 11.3378 9.42087 11.3334 9.52708 11.3018C9.6333 11.2703 9.72991 11.2126 9.80806 11.134L10.6701 10.272L12.3941 11.996L11.0567 13.3327C10.2247 13.3187 7.37806 13.0954 5.1414 10.858C2.8974 8.61404 2.68006 5.75737 2.66673 4.94204L4.0034 3.60537ZM13.3327 7.33271H14.6661C14.6661 3.91271 12.0841 1.33337 8.6594 1.33337V2.66671C11.3674 2.66671 13.3327 4.62871 13.3327 7.33271Z"
-                  fill="white"
-                />
-                <path
-                  d="M8.66602 5.33333C10.068 5.33333 10.666 5.93133 10.666 7.33333H11.9993C11.9993 5.18333 10.816 4 8.66602 4V5.33333Z"
-                  fill="white"
-                />
-              </svg>
-
-              <div className="text2    text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-base leading-none">
-                (12345)67890
-              </div>
-            </div> */}
           </div>
           <div className="part2 flex gap-1  s:gap-3">
             <select
               name="languages"
               id="languages"
-              className="bg-transparent   text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-base "
+              className="bg-transparent text-[9px] lg:text-sm clg:text-base "
             >
               <option value="eng" className="bg-[#7E33E0] ">
                 English
@@ -132,53 +108,35 @@ export default function Header() {
                 Chinese
               </option>
             </select>
-            {/* <select
-              name="currencies"
-              id="currencies"
-              className="bg-transparent   text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-base "
-            >
-              <option value="usd" className="bg-[#7E33E0] ">
-                USD
-              </option>
-              <option value="pkr" className="bg-[#7E33E0] ">
-                PKR
-              </option>
-              <option value="eur" className="bg-[#7E33E0] ">
-                EUR
-              </option>
-              <option value="gbp" className="bg-[#7E33E0] ">
-                GBP
-              </option>
-              <option value="aud" className="bg-[#7E33E0] ">
-                AUD
-              </option>
-            </select> */}
-                    <div className="loginIcon flex justify-center items-center s:gap-1">
-              <div className="text    text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-base leading-none">
-                <Link href={"/login"}>                 <SignInButton />
+         
+            <div className="loginIcon flex justify-center items-center s:gap-1">
+              <div className="text    text-[9px] lg:text-sm clg:text-base leading-none">
+                <Link href={"/login"}>
+                  {" "}
+                  <SignInButton />
                 </Link>
               </div>
               <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 16 16"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="s:h-[16px] s:w-[16px] xxmd:h-[14px] xxmd:w-[14px] h-[12px] w-[12px]"
-                >
-                  <path
-                    d="M8 2C8.49445 2 8.9778 2.14662 9.38893 2.42133C9.80005 2.69603 10.1205 3.08648 10.3097 3.54329C10.4989 4.00011 10.5484 4.50277 10.452 4.98773C10.3555 5.47268 10.1174 5.91814 9.76777 6.26777C9.41814 6.6174 8.97268 6.8555 8.48773 6.95196C8.00277 7.04843 7.50011 6.99892 7.04329 6.8097C6.58648 6.62048 6.19603 6.30005 5.92133 5.88893C5.64662 5.4778 5.5 4.99445 5.5 4.5C5.5 3.83696 5.76339 3.20107 6.23223 2.73223C6.70108 2.26339 7.33696 2 8 2ZM8 1C7.30777 1 6.63108 1.20527 6.05551 1.58986C5.47993 1.97444 5.03133 2.52107 4.76642 3.16061C4.50152 3.80015 4.4322 4.50388 4.56725 5.18282C4.7023 5.86175 5.03564 6.48539 5.52513 6.97487C6.01461 7.46436 6.63825 7.7977 7.31719 7.93275C7.99612 8.0678 8.69985 7.99848 9.33939 7.73358C9.97893 7.46867 10.5256 7.02007 10.9101 6.4445C11.2947 5.86892 11.5 5.19223 11.5 4.5C11.5 3.57174 11.1313 2.6815 10.4749 2.02513C9.8185 1.36875 8.92826 1 8 1Z"
-                    fill="white"
-                  />
-                  <path
-                    d="M13 15H12V12.5C12 12.1717 11.9353 11.8466 11.8097 11.5433C11.6841 11.24 11.4999 10.9644 11.2678 10.7322C11.0356 10.5001 10.76 10.3159 10.4567 10.1903C10.1534 10.0647 9.8283 10 9.5 10H6.5C5.83696 10 5.20107 10.2634 4.73223 10.7322C4.26339 11.2011 4 11.837 4 12.5V15H3V12.5C3 11.5717 3.36875 10.6815 4.02513 10.0251C4.6815 9.36875 5.57174 9 6.5 9H9.5C10.4283 9 11.3185 9.36875 11.9749 10.0251C12.6313 10.6815 13 11.5717 13 12.5V15Z"
-                    fill="white"
-                  />
-                </svg>
-</div>
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="s:h-[16px] s:w-[16px] xxmd:h-[14px] xxmd:w-[14px] h-[12px] w-[12px]"
+              >
+                <path
+                  d="M8 2C8.49445 2 8.9778 2.14662 9.38893 2.42133C9.80005 2.69603 10.1205 3.08648 10.3097 3.54329C10.4989 4.00011 10.5484 4.50277 10.452 4.98773C10.3555 5.47268 10.1174 5.91814 9.76777 6.26777C9.41814 6.6174 8.97268 6.8555 8.48773 6.95196C8.00277 7.04843 7.50011 6.99892 7.04329 6.8097C6.58648 6.62048 6.19603 6.30005 5.92133 5.88893C5.64662 5.4778 5.5 4.99445 5.5 4.5C5.5 3.83696 5.76339 3.20107 6.23223 2.73223C6.70108 2.26339 7.33696 2 8 2ZM8 1C7.30777 1 6.63108 1.20527 6.05551 1.58986C5.47993 1.97444 5.03133 2.52107 4.76642 3.16061C4.50152 3.80015 4.4322 4.50388 4.56725 5.18282C4.7023 5.86175 5.03564 6.48539 5.52513 6.97487C6.01461 7.46436 6.63825 7.7977 7.31719 7.93275C7.99612 8.0678 8.69985 7.99848 9.33939 7.73358C9.97893 7.46867 10.5256 7.02007 10.9101 6.4445C11.2947 5.86892 11.5 5.19223 11.5 4.5C11.5 3.57174 11.1313 2.6815 10.4749 2.02513C9.8185 1.36875 8.92826 1 8 1Z"
+                  fill="white"
+                />
+                <path
+                  d="M13 15H12V12.5C12 12.1717 11.9353 11.8466 11.8097 11.5433C11.6841 11.24 11.4999 10.9644 11.2678 10.7322C11.0356 10.5001 10.76 10.3159 10.4567 10.1903C10.1534 10.0647 9.8283 10 9.5 10H6.5C5.83696 10 5.20107 10.2634 4.73223 10.7322C4.26339 11.2011 4 11.837 4 12.5V15H3V12.5C3 11.5717 3.36875 10.6815 4.02513 10.0251C4.6815 9.36875 5.57174 9 6.5 9H9.5C10.4283 9 11.3185 9.36875 11.9749 10.0251C12.6313 10.6815 13 11.5717 13 12.5V15Z"
+                  fill="white"
+                />
+              </svg>
+            </div>
 
             <div className="wishlistIcon flex justify-center items-center s:gap-1">
-              <div className="text    text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-base leading-none">
+              <div className="text  text-[9px] lg:text-sm clg:text-base leading-none">
                 <Link href={"/wishList"}> Wishlist</Link>
               </div>
               <svg
@@ -227,8 +185,6 @@ export default function Header() {
                   />
                 </svg>
               </Link>
-
-                
             </div>
           </div>
         </div>
@@ -295,7 +251,7 @@ export default function Header() {
                         Home
                       </Link>
                     </li>
-                    
+
                     <li>
                       <Link
                         href={"/gridDefault"}
@@ -339,16 +295,13 @@ export default function Header() {
                   </div>
 
                   <div className="mt-3 space-y-1">
-                  
                     {/* Sofas */}
                     <Select>
                       <SelectTrigger className="sm:h-9 text-gray-600 font-semibold text-sm xxmd:text-md border-none hover:bg-gray-200 px-4 rounded">
                         <SelectValue placeholder=" Sectional Sofas" />
                       </SelectTrigger>
                       <SelectContent className=" bg-white">
-                        <SelectItem value="sectional">
-                          Modern Sofas
-                        </SelectItem>
+                        <SelectItem value="sectional">Modern Sofas</SelectItem>
                         <SelectItem value="sleeper" className="">
                           Sleeper Sofas
                         </SelectItem>
@@ -356,7 +309,7 @@ export default function Header() {
                       </SelectContent>
                     </Select>
 
-                    {/* Dining Chairs */} 
+                    {/* Dining Chairs */}
                     <Select>
                       <SelectTrigger className="sm:h-9 text-gray-600 font-semibold text-sm xxmd:text-md border-none  hover:bg-gray-200 px-4 rounded">
                         <SelectValue placeholder="Dining Chairs" />
@@ -370,15 +323,13 @@ export default function Header() {
                       </SelectContent>
                     </Select>
 
-                   {/* Office Chairs */}
+                    {/* Office Chairs */}
                     <Select>
                       <SelectTrigger className="sm:h-9 text-gray-600 font-semibold text-sm xxmd:text-md border-none hover:bg-gray-200 px-4 rounded">
                         <SelectValue placeholder="Wooden Chairs" />
                       </SelectTrigger>
                       <SelectContent className=" bg-white">
-                        <SelectItem value="ergonomic">
-                          Wooden Chairs
-                        </SelectItem>
+                        <SelectItem value="ergonomic">Wooden Chairs</SelectItem>
                         <SelectItem value="executive">
                           Executive Chairs
                         </SelectItem>

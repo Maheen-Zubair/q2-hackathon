@@ -2,7 +2,6 @@
 import React from "react";
 import Image from "next/image";
 import logo from "../../public/hecko(footer).png";
-import icon from "../../public/Group 205.png";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -153,12 +152,6 @@ export default function Footer() {
           </svg>
           <p>Copyright Rimel 2022. All right reserved</p>
         </div>
-
-        <Image
-          src={icon}
-          alt="icon"
-          className="absolute bottom-3 right-[20%] "
-        />
       </div>
     </div>
   );
