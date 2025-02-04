@@ -21,7 +21,8 @@ interface Product {
   imageURL: string;
   price: number;
   discountPercentage: number;
-  _id: number;
+  _id: string;
+  quantity:number;
   category: string;
   description: string;
 }
@@ -29,7 +30,7 @@ export default function Section3() {
   const [product, setProduct] = useState<Product[]>([]);
     const [alertData, setAlertData] = useState<{
       show: boolean;
-      type: any;
+      type: "success" | "error" | "wishlist-add" | "wishlist-remove";
       message: string;
     }>({
       show: false,

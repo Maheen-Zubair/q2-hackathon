@@ -20,7 +20,7 @@ export default function ShopppingCart() {
 
   const [alertData, setAlertData] = useState<{
     show: boolean;
-    type: any;
+    type: "success" | "error" | "wishlist-add" | "wishlist-remove";
     message: string;
   }>({
     show: false,

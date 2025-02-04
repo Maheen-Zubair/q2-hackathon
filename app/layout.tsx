@@ -1,14 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Josefin_Sans } from "@next/font/google";
 import { WishlistProvider } from "./context/wishList-Context";
 import { ClerkProvider,  SignedOut, } from "@clerk/nextjs";
-
-
-const josefinSans = Josefin_Sans({
-  subsets: ["latin"], 
-  weight: ["400", "700"], 
-});
 
 export const metadata: Metadata = {
   title: "Create Next App",

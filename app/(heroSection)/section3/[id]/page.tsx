@@ -25,7 +25,7 @@ interface Review {
   comment: string;
 }
 interface Product {
-  _id: number;
+  _id: string;
   name: string;
   imageURL: string;
   price: number;
@@ -41,7 +41,7 @@ export default function Detail({ params }: { params: { id: string } }) {
   const [usproduct, setProduct] = useState<Product | undefined>(undefined);
   const [activeSection, setActiveSection] = useState("description"); 
 
-  const [alertData, setAlertData] = useState<{ show: boolean; type: any; message: string }>({
+  const [alertData, setAlertData] = useState<{ show: boolean; type: "success" | "error" | "wishlist-add" | "wishlist-remove"; message: string }>({
         show: false,
         type: "success",
         message: "",

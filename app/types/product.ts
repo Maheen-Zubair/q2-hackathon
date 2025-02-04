@@ -1,10 +1,10 @@
-export interface Product {
-  _id: number;
+export type Product = {
+  _id: string;
   name: string;
-  imageURL: string;
+  description: string;
   price: number;
-  discountPercentage:number;
-  category:string;
-
-  }
-  
+  imageURL: string;
+  quantity: number;
+  discountPercentage?: number; // made optional
+  category?: string;          // made optional
+};

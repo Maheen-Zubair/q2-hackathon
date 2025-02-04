@@ -26,9 +26,10 @@ interface Product {
   imageURL: string;
   price: number;
   discountPercentage:number;
-  _id:number;
+  _id:string;
   category:string,
-  description:string
+  description:string,
+  quantity: number
 }
 
 export default function Grid() {
@@ -43,11 +44,10 @@ export default function Grid() {
       }, []);
 
 
-      // category filter
-      const [selectedCategory, setSelectedCategory] = useState<string>(""); // Category filter
+    const [selectedCategory, setSelectedCategory] = useState<string>(""); // Category filter
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
    
-    const [alertData, setAlertData] = useState<{ show: boolean; type: any; message: string }>({
+    const [alertData, setAlertData] = useState<{ show: boolean; type: "success" | "error" | "wishlist-add" | "wishlist-remove"; message: string }>({
       show: false,
       type: "success",
       message: "",

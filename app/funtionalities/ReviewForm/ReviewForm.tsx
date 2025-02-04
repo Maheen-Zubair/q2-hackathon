@@ -9,16 +9,14 @@ interface Review {
   rating: number;
   comment: string;
 }
-
 interface ReviewSectionProps {
-  productId: number;
+  productId: string;
   reviews: Review[];
   onNewReview: (review: Review) => void;
 }
 
 export default function ReviewSection({
   productId,
-  reviews,
   onNewReview,
 }: ReviewSectionProps) {
   const [formOpen, setFormOpen] = useState(false);
@@ -77,6 +75,7 @@ export default function ReviewSection({
           {formOpen ? "Cancel" : "Add Review"}
         </button>
       </div>
+      
       {/* toggle function for add to review button */}
       {formOpen && (
         <div className="mt-8 bg-white p-6 rounded-lg shadow-lg">

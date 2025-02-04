@@ -11,7 +11,6 @@ import Section9 from "./(heroSection)/section9/page";
 import Section from "./(heroSection)/section/page";
 import Header from "./components/header";
 import Footer from "./components/footer";
-import SocialShare from "./funtionalities/social-sharing/page";
 export default function Home() {
   return (
     <div>

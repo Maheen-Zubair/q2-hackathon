@@ -15,7 +15,7 @@ export async function POST(req: Request) {
 
     console.log("Received products in API:", products); 
 
-    const lineItems = products.map((product: any) => ({
+    const lineItems = products.map((product: { title: string; description: string; price: number; quantity: number }) => ({
       quantity: product.quantity || 1,
       price_data: {
         currency: "usd",
@@ -41,8 +41,9 @@ export async function POST(req: Request) {
     console.log("Stripe Session Created:", session); 
 
     return NextResponse.json({ sessionId: session.id });
-  } catch (err: any) {
+  } catch (err) {
     console.error(" Error in API:", err);
-    return NextResponse.json({ error: err.message }, { status: 500 });
+    const errorMessage = err instanceof Error ? err.message : "Unknown error";
+    return NextResponse.json({ error: errorMessage }, { status: 500 });
   }
 }

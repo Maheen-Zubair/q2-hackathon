@@ -3,43 +3,46 @@
 import { useState, useEffect } from "react";
 import { useWishlist } from "@/app/context/wishList-Context";
 import Alert from "../alerts/added-product";
+import { Product } from "@/app/types/product"; 
 
 type LikeButtonProps = {
-  item: {
-    _id: number;
-    name: string;
-    imageURL: string;
-    price: number;
-    discountPercentage: number;
-    category: string;
-    description: string;
-  };
+  item: Product;
 };
 
 export default function SmallLikeButton({ item }: LikeButtonProps) {
-  const { wishlist, addToWishlist, removeFromWishlist } = useWishlist();
+  const { wishlist, addToWishlist } = useWishlist();
   const [liked, setLiked] = useState(false);
-  const [alertData, setAlertData] = useState<{ show: boolean; type: any; message: string }>({
+  const [alertData, setAlertData] = useState<{
+    show: boolean;
+    type: "success" | "error" | "wishlist-add" | "wishlist-remove";
+    message: string;
+  }>({
     show: false,
     type: "success",
     message: "",
   });
 
-  const showAlert = (type: "success" | "error" | "wishlist-add" | "wishlist-remove", message: string) => {
+  const showAlert = (
+    type: "success" | "error" | "wishlist-add" | "wishlist-remove",
+    message: string
+  ) => {
     setAlertData({ show: true, type, message });
-    setTimeout(() => setAlertData({ show: false, type: "success", message: "" }), 3000);
+    setTimeout(
+      () => setAlertData({ show: false, type: "success", message: "" }),
+      3000
+    );
   };
 
   useEffect(() => {
-    const isLiked = wishlist.some((wishlistItem: any) => wishlistItem._id === item._id);
+    const isLiked = wishlist.some((wishlistItem: Product) => wishlistItem._id === item._id);
     setLiked(isLiked);
-    console.log("Item Passed to LikeButton: ", item);
-    console.log("Is Liked: ", isLiked);
+    console.log("Item Passed to SmallLikeButton:", item);
+    console.log("Is Liked:", isLiked);
   }, [wishlist, item]);
 
   const handleClick = () => {
     if (liked) {
-      showAlert("wishlist-remove", "Removed from Wishlist!");
+        showAlert("wishlist-remove", "Removed from Wishlist!");
     } else {
       addToWishlist(item);
       showAlert("wishlist-add", "Added to Wishlist!");
@@ -49,10 +52,7 @@ export default function SmallLikeButton({ item }: LikeButtonProps) {
 
   return (
     <button
-      onClick={() => {
-        showAlert("wishlist-add", "Added to Wishlist!");
-        handleClick();
-      }}
+      onClick={handleClick}
       className="flex items-center space-x-2"
     >
       <svg
@@ -61,7 +61,7 @@ export default function SmallLikeButton({ item }: LikeButtonProps) {
         viewBox="0 0 24 24"
         strokeWidth={1.5}
         stroke="currentColor"
-        className="w-4 h-4 cursor-pointer" // SVG size reduced
+        className="w-4 h-4 cursor-pointer"
       >
         <path
           strokeLinecap="round"
@@ -73,7 +73,9 @@ export default function SmallLikeButton({ item }: LikeButtonProps) {
         show={alertData.show}
         type={alertData.type}
         message={alertData.message}
-        onClose={() => setAlertData({ show: false, type: "success", message: "" })}
+        onClose={() =>
+          setAlertData({ show: false, type: "success", message: "" })
+        }
       />
     </button>
   );
