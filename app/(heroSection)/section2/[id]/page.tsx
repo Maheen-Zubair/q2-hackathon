@@ -13,10 +13,9 @@ import Alert from "@/app/funtionalities/alerts/added-product";
 import LikeButton from "@/app/funtionalities/likeButton/likeButton";
 import addToCart from "@/app/funtionalities/cart/addToCart";
 import ReviewList from "@/app/funtionalities/ReviewForm/ReviewList";
-import ReviewForm  from "@/app/funtionalities/ReviewForm/ReviewForm";
+import ReviewForm from "@/app/funtionalities/ReviewForm/ReviewForm";
 import Footer from "@/app/components/footer";
 import Header from "@/app/components/header";
-
 
 interface Review {
   _id: string;
@@ -35,24 +34,26 @@ interface Product {
   quantity: number;
 }
 
-
 export default function Detail({ params }: { params: { id: string } }) {
-
   const [usproduct, setProduct] = useState<Product | undefined>(undefined);
   const [activeSection, setActiveSection] = useState("description"); // To toggle between sections
 
-  const [alertData, setAlertData] = useState<{ show: boolean; type: "success" | "error" | "wishlist-add" | "wishlist-remove"; message: string }>({
-        show: false,
-        type: "success",
-        message: "",
-      });
-      const [reviews, setReviews] = useState<Review[]>([]);
-      const { id } = params;
+  const [alertData, setAlertData] = useState<{
+    show: boolean;
+    type: "success" | "error" | "wishlist-add" | "wishlist-remove";
+    message: string;
+  }>({
+    show: false,
+    type: "success",
+    message: "",
+  });
+  const [reviews, setReviews] = useState<Review[]>([]);
+  const { id } = params;
 
-      useEffect(() => {
-        const fetchProduct = async () => {
-          try {
-            const query = `*[_type == "product" && _id == $id ][0]{
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const query = `*[_type == "product" && _id == $id ][0]{
               _id,
               name,
               price,
@@ -62,36 +63,41 @@ export default function Detail({ params }: { params: { id: string } }) {
               "imageURL": coalesce(image.asset->url, image.asset->url),
               "reviews": *[_type == "review" && product._ref == ^._id] | order(_createdAt desc)
             }`;
-    
-            const data = await client.fetch(query, { id });
-            if (data) {
-              setProduct(data);
-              setReviews(data.reviews || []);
-            } else {
-              console.error("Product not found");
-            }
-          } catch (error) {
-            console.error("Error fetching product:", error);
-          }
-        };
-        if (id) {
-          fetchProduct();
-        }
-      }, [id],);
 
+        const data = await client.fetch(query, { id });
+        if (data) {
+          setProduct(data);
+          setReviews(data.reviews || []);
+        } else {
+          console.error("Product not found");
+        }
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
+    };
+    if (id) {
+      fetchProduct();
+    }
+  }, [id]);
 
   if (!usproduct) {
     return <div>Loading...</div>;
   }
- 
-    const showAlert = (type: "success" | "error" | "wishlist-add" | "wishlist-remove", message: string) => {
-      setAlertData({ show: true, type, message });
-      setTimeout(() => setAlertData({ show: false, type: "success", message: "" }), 1000); 
-    };
-  
+
+  const showAlert = (
+    type: "success" | "error" | "wishlist-add" | "wishlist-remove",
+    message: string
+  ) => {
+    setAlertData({ show: true, type, message });
+    setTimeout(
+      () => setAlertData({ show: false, type: "success", message: "" }),
+      1000
+    );
+  };
+
   return (
-    <div >
-      <Header/>
+    <div>
+      <Header />
       <div className="lg:h-[286px] h-[120px] mt-5 md:h-[220px] w-full bg-[#F6F5FF] flex flex-col items-start justify-center">
         <div className=" flex flex-col items-start justify-center lg:pl-28 pl-10 md:pl-16">
           <h1 className="lg:text-[36px] text-[20px] md:text-[28px] font-bold text-[#101750]">
@@ -143,7 +149,6 @@ export default function Detail({ params }: { params: { id: string } }) {
               ></img>
             </div>
           </div>
-      
 
           <div className="part2 pt-5 sl:pt-0 pl-4 sl:w-[50%] ">
             <div className="flex flex-col gap-3 sl:gap-4 pl-1 sm:pl-2 md:pl-5 lg:pl-7">
@@ -174,10 +179,10 @@ export default function Detail({ params }: { params: { id: string } }) {
 
             <div className="flex items-center justify-center gap-6 pt-3 pb-3 sm:pl-2 md:pl-5 lg:pl-7">
               <div
-              onClick={() => {
-                showAlert("success", "Added to Cart!");
-                addToCart(usproduct);
-              }}
+                onClick={() => {
+                  showAlert("success", "Added to Cart!");
+                  addToCart(usproduct);
+                }}
                 className="text-base leading-[29px] "
               >
                 Add To cart
@@ -185,13 +190,18 @@ export default function Detail({ params }: { params: { id: string } }) {
 
               <LikeButton item={usproduct} />
             </div>
+            <div></div>
             <div>
-                  </div>
-            <div>
-  
-      {/* Display alert */}
-      <Alert show={alertData.show} type={alertData.type} message={alertData.message} onClose={() => setAlertData({ show: false, type: "success", message: "" })} />
-    </div>
+              {/* Display alert */}
+              <Alert
+                show={alertData.show}
+                type={alertData.type}
+                message={alertData.message}
+                onClose={() =>
+                  setAlertData({ show: false, type: "success", message: "" })
+                }
+              />
+            </div>
             <div className="text-base leading-[29px] sm:pl-2 md:pl-5 lg:pl-7">
               Categories: {usproduct.category}
             </div>
@@ -199,10 +209,12 @@ export default function Detail({ params }: { params: { id: string } }) {
               Tags: Latest
             </div>
 
-            <div className="flex gap-6 items-center sm:pl-2 
+            <div
+              className="flex gap-6 items-center sm:pl-2 
             
             
-            md:pl-5 lg:pl-7  ">
+            md:pl-5 lg:pl-7  "
+            >
               <h2 className="text-base leading-[29px]">Share</h2>
               <SocialShare />
             </div>
@@ -212,241 +224,255 @@ export default function Detail({ params }: { params: { id: string } }) {
 
       {/* -------para component--------- */}
       <div className="flex pb-14 justify-center bg-[#F9F8FE] pt-[100px]">
-      <div className="mainComponent font-josefin flex flex-col gap-2 llm:gap-6 clg:w-[75%] w-[90%]">
-        <div className="part1 pb-6 text-[#151875] flex gap-2 md:gap-10">
-          {/* Section Links */}
-          <h1
-            className={`hover:underline text-[12px] clxs:text-[15px] lg:text-[22px] font-bold cursor-pointer ${
-              activeSection === "description" ? "text-blue-600" : "text-black"
-            }`}
-            onClick={() => setActiveSection("description")}
-          >
-            Description
-          </h1>
-          <h1
-            className={`hover:underline text-[12px] clxs:text-[15px] lg:text-[22px] font-bold cursor-pointer ${
-              activeSection === "additionalInfo" ? "text-blue-600" : "text-black"
-            }`}
-            onClick={() => setActiveSection("additionalInfo")}
-          >
-            Additional Info
-          </h1>
-          <h1
-            className={`hover:underline text-[12px] clxs:text-[15px] lg:text-[22px] font-bold cursor-pointer ${
-              activeSection === "reviews" ? "text-blue-600" : "text-black"
-            }`}
-            onClick={() => setActiveSection("reviews")}
-          > 
-            Reviews
-          </h1>
-         
+        <div className="mainComponent font-josefin flex flex-col gap-2 llm:gap-6 clg:w-[75%] w-[90%]">
+          <div className="part1 pb-6 text-[#151875] flex gap-2 md:gap-10">
+            {/* Section Links */}
+            <h1
+              className={`hover:underline text-[12px] clxs:text-[15px] lg:text-[22px] font-bold cursor-pointer ${
+                activeSection === "description" ? "text-blue-600" : "text-black"
+              }`}
+              onClick={() => setActiveSection("description")}
+            >
+              Description
+            </h1>
+            <h1
+              className={`hover:underline text-[12px] clxs:text-[15px] lg:text-[22px] font-bold cursor-pointer ${
+                activeSection === "additionalInfo"
+                  ? "text-blue-600"
+                  : "text-black"
+              }`}
+              onClick={() => setActiveSection("additionalInfo")}
+            >
+              Additional Info
+            </h1>
+            <h1
+              className={`hover:underline text-[12px] clxs:text-[15px] lg:text-[22px] font-bold cursor-pointer ${
+                activeSection === "reviews" ? "text-blue-600" : "text-black"
+              }`}
+              onClick={() => setActiveSection("reviews")}
+            >
+              Reviews
+            </h1>
+          </div>
+
+          {/* Description Section */}
+          {activeSection === "description" && (
+            <div>
+              <div className="part2 flex flex-col gap-3">
+                <h1 className="text-[20px] lg:text-[22px] font-bold text-[#151875]">
+                  Varius tempor.
+                </h1>
+                <p className=" text-[16px] text-[#A9ACC6]">
+                  Aliquam dis vulputate vulputate integer sagittis. Faucibus
+                  dolor ornare faucibus vel sed et eleifend habitasse amet.
+                  Montes, mauris varius ac est bibendum. Scelerisque a, risus ac
+                  ante. Velit consectetur neque, elit, aliquet. Non varius proin
+                  sed urna, egestas consequat laoreet diam tincidunt. Magna eget
+                  faucibus cras justo, tortor sed donec tempus. Imperdiet
+                  consequat, quis diam arcu, nulla lobortis justo netus dis. Eu
+                  in fringilla vulputate nunc nec. Dui, massa viverr .
+                </p>
+              </div>
+              <div className="part3 flex flex-col gap-3">
+                <h1 className="text-[20px] lg:text-[22px] font-bold text-[#151875]">
+                  More details
+                </h1>
+                <div className=" flex gap-2 items-center">
+                  <svg
+                    width="18"
+                    height="16"
+                    viewBox="0 0 18 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1 8L17 8"
+                      stroke="black"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M10 1L17 8L10 15"
+                      stroke="black"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <p className="text-[16px] text-[#A9ACC6]">
+                    Aliquam dis vulputate vulputate integer sagittis. Faucibus
+                    ds diam arcu, nulla lobortis justo netus dis. Eu in
+                    fringilla vulputate nunc nec. Dui, massa viverr .
+                  </p>
+                </div>
+                <div className=" flex gap-2 items-center">
+                  <svg
+                    width="18"
+                    height="16"
+                    viewBox="0 0 18 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1 8L17 8"
+                      stroke="black"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M10 1L17 8L10 15"
+                      stroke="black"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <p className="text-[16px] text-[#A9ACC6]">
+                    Aliquam dis vulputate vulputate integer sagittis. Faucibus
+                    ds diam arcu, nulla lobortis justo netus dis. Eu in
+                    fringilla vulputate nunc nec. Dui, massa viverr .
+                  </p>
+                </div>
+                <div className=" flex gap-2 items-center">
+                  <svg
+                    width="18"
+                    height="16"
+                    viewBox="0 0 18 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1 8L17 8"
+                      stroke="black"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M10 1L17 8L10 15"
+                      stroke="black"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <p className="text-[16px] text-[#A9ACC6]">
+                    Aliquam dis vulputate vulputate integer sagittis. Faucibus
+                    ds diam arcu, nulla lobortis justo netus dis. Eu in
+                    fringilla vulputate nunc nec. Dui, massa viverr .
+                  </p>
+                </div>
+                <div className=" flex gap-2 items-center">
+                  <svg
+                    width="18"
+                    height="16"
+                    viewBox="0 0 18 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1 8L17 8"
+                      stroke="black"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M10 1L17 8L10 15"
+                      stroke="black"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                  <p className="text-[16px] text-[#A9ACC6]">
+                    Aliquam dis vulputate vulputate integer sagittis. Faucibus
+                    ds diam arcu, nulla lobortis justo netus dis. Eu in
+                    fringilla vulputate nunc nec. Dui, massa viverr .
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Additional Info Section */}
+          {activeSection === "additionalInfo" && (
+            <div className="part3 flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+              <div className="flex items-center space-x-3 p-4 border rounded-lg shadow-md bg-white">
+                <svg
+                  width="20"
+                  height="20"
+                  fill="#151875"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+                </svg>
+                <p className="text-[16px] text-[#151875]">
+                  Material: High-Quality Mesh & Faux Leather
+                </p>
+              </div>
+              <div className="flex items-center space-x-3 p-4 border rounded-lg shadow-md bg-white">
+                <svg
+                  width="20"
+                  height="20"
+                  fill="#151875"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+                </svg>
+                <p className="text-[16px] text-[#151875]">
+                  Dimensions: 24&quot; x 24&quot; x 48&quot; (W x D x H)
+                </p>
+              </div>
+              <div className="flex items-center space-x-3 p-4 border rounded-lg shadow-md bg-white">
+                <svg
+                  width="20"
+                  height="20"
+                  fill="#151875"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+                </svg>
+                <p className="text-[16px] text-[#151875]">
+                  Adjustable Height & Armrests for Comfort
+                </p>
+              </div>
+            </div>
+          )}
+
+          {/* Review Section */}
+          {activeSection === "reviews" && (
+            <div className="bg-[#F9F8FE] pb-5">
+              <div className="text-center">
+                <h2 className="text-2xl sm:text-[35px] font-bold text-[#151875]">
+                  Customer Reviews
+                </h2>
+                <p className="text-sm sm:text-base text-gray-600 mt-2">
+                  Share your own thoughts to help others make informed
+                  decisions.
+                </p>
+              </div>
+              <div className="px-3 sm:px-14">
+                <ReviewList reviews={reviews} />
+              </div>
+
+              {/* Review Form */}
+              <ReviewForm
+                productId={usproduct._id}
+                onNewReview={(newReview) =>
+                  setReviews((prevReviews) => [newReview, ...prevReviews])
+                }
+                reviews={reviews}
+              />
+            </div>
+          )}
         </div>
-
-        {/* Description Section */}
-        {activeSection === "description" && (
-          <div>
-          <div className="part2 flex flex-col gap-3">
-            <h1 className="text-[20px] lg:text-[22px] font-bold text-[#151875]">
-              Varius tempor.
-            </h1>
-            <p className=" text-[16px] text-[#A9ACC6]">
-              Aliquam dis vulputate vulputate integer sagittis. Faucibus dolor
-              ornare faucibus vel sed et eleifend habitasse amet. Montes, mauris
-              varius ac est bibendum. Scelerisque a, risus ac ante. Velit
-              consectetur neque, elit, aliquet. Non varius proin sed urna,
-              egestas consequat laoreet diam tincidunt. Magna eget faucibus cras
-              justo, tortor sed donec tempus. Imperdiet consequat, quis diam
-              arcu, nulla lobortis justo netus dis. Eu in fringilla vulputate
-              nunc nec. Dui, massa viverr .
-            </p>
-          </div>
-          <div className="part3 flex flex-col gap-3">
-            <h1 className="text-[20px] lg:text-[22px] font-bold text-[#151875]">
-              More details
-            </h1>
-            <div className=" flex gap-2 items-center">
-              <svg
-                width="18"
-                height="16"
-                viewBox="0 0 18 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1 8L17 8"
-                  stroke="black"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M10 1L17 8L10 15"
-                  stroke="black"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <p className="text-[16px] text-[#A9ACC6]">
-                Aliquam dis vulputate vulputate integer sagittis. Faucibus ds
-                diam arcu, nulla lobortis justo netus dis. Eu in fringilla
-                vulputate nunc nec. Dui, massa viverr .
-              </p>
-            </div>
-            <div className=" flex gap-2 items-center">
-              <svg
-                width="18"
-                height="16"
-                viewBox="0 0 18 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1 8L17 8"
-                  stroke="black"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M10 1L17 8L10 15"
-                  stroke="black"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <p className="text-[16px] text-[#A9ACC6]">
-                Aliquam dis vulputate vulputate integer sagittis. Faucibus ds
-                diam arcu, nulla lobortis justo netus dis. Eu in fringilla
-                vulputate nunc nec. Dui, massa viverr .
-              </p>
-            </div>
-            <div className=" flex gap-2 items-center">
-              <svg
-                width="18"
-                height="16"
-                viewBox="0 0 18 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1 8L17 8"
-                  stroke="black"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M10 1L17 8L10 15"
-                  stroke="black"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <p className="text-[16px] text-[#A9ACC6]">
-                Aliquam dis vulputate vulputate integer sagittis. Faucibus ds
-                diam arcu, nulla lobortis justo netus dis. Eu in fringilla
-                vulputate nunc nec. Dui, massa viverr .
-              </p>
-            </div>
-            <div className=" flex gap-2 items-center">
-              <svg
-                width="18"
-                height="16"
-                viewBox="0 0 18 16"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M1 8L17 8"
-                  stroke="black"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M10 1L17 8L10 15"
-                  stroke="black"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <p className="text-[16px] text-[#A9ACC6]">
-                Aliquam dis vulputate vulputate integer sagittis. Faucibus ds
-                diam arcu, nulla lobortis justo netus dis. Eu in fringilla
-                vulputate nunc nec. Dui, massa viverr .
-              </p>
-            </div>
-          </div>
-          </div>
-   
-
-        )}
-
-        {/* Additional Info Section */}
-        {activeSection === "additionalInfo" && (
-          <div className="part3 flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-            <div className="flex items-center space-x-3 p-4 border rounded-lg shadow-md bg-white">
-              <svg width="20" height="20" fill="#151875" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
-              </svg>
-              <p className="text-[16px] text-[#151875]">
-                Material: High-Quality Mesh & Faux Leather
-              </p>
-            </div>
-            <div className="flex items-center space-x-3 p-4 border rounded-lg shadow-md bg-white">
-              <svg width="20" height="20" fill="#151875" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
-              </svg>
-              <p className="text-[16px] text-[#151875]">
-                Dimensions: 24" x 24" x 48" (W x D x H)
-              </p>
-            </div>
-            <div className="flex items-center space-x-3 p-4 border rounded-lg shadow-md bg-white">
-              <svg width="20" height="20" fill="#151875" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
-              </svg>
-              <p className="text-[16px] text-[#151875]">
-                Adjustable Height & Armrests for Comfort
-              </p>
-            </div>
-          </div>
-        )}
-
-        
-
-        {/* Review Section */}
-        {activeSection === "reviews" && (
-          <div className="bg-[#F9F8FE] pb-5">
-            <div className="text-center">
-              <h2 className="text-2xl sm:text-[35px] font-bold text-[#151875]">
-                Customer Reviews
-              </h2>
-              <p className="text-sm sm:text-base text-gray-600 mt-2">
-                Share your own thoughts to help others make informed decisions.
-              </p>
-            </div>
-            <div className="px-3 sm:px-14">
-              <ReviewList reviews={reviews} />
-            </div>
-
-            {/* Review Form */}
-            <ReviewForm
-              productId={usproduct._id}
-              onNewReview={(newReview) =>
-                setReviews((prevReviews) => [newReview, ...prevReviews])
-              }
-              reviews={reviews}
-            />
-          </div>
-        )}
-
-       
       </div>
-    </div>
 
       {/* --------related products component------ */}
       <div className="flex flex-col text-[#151875] pt-24 pb-24 items-center  gap-[10px] md:gap-[20px]">
@@ -513,7 +539,7 @@ export default function Detail({ params }: { params: { id: string } }) {
         </div>
       </div>
       <Section8 />
-      <Footer/>
+      <Footer />
     </div>
   );
 }

@@ -399,7 +399,7 @@ export default function Detail({ params }: { params: { id: string } }) {
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
               </svg>
               <p className="text-[16px] text-[#151875]">
-                Dimensions: 24" x 24" x 48" (W x D x H)
+                Dimensions: 24&quot; x 24&quot; x 48&quot; (W x D x H)
               </p>
             </div>
             <div className="flex items-center space-x-3 p-4 border rounded-lg shadow-md bg-white">
