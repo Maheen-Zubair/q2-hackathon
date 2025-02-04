@@ -3,6 +3,8 @@ import React from "react";
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import Alert from "@/app/funtionalities/alerts/added-product";
+import { loadStripe } from "@stripe/stripe-js";
 
 type Product = {
   _id: string;
@@ -16,19 +18,26 @@ type Product = {
 export default function ShopppingCart() {
   const [cart, setCart] = useState<Product[]>([]);
 
+  const [alertData, setAlertData] = useState<{
+    show: boolean;
+    type: any;
+    message: string;
+  }>({
+    show: false,
+    type: "success",
+    message: "",
+  });
   // Remove a single product from the cart
   const removeFromCart = (id: string) => {
     const updatedCart = cart.filter((item) => item._id !== id);
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
-    alert("Product removed from cart!");
   };
 
   // Clear the entire cart
   const clearCart = () => {
     setCart([]);
     localStorage.removeItem("cart");
-    alert("Cart has been cleared!");
   };
 
   // Handle quantity change for a specific product
@@ -44,7 +53,7 @@ export default function ShopppingCart() {
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
-  // Fetch cart data from localStorage
+
   useEffect(() => {
     const storedCart = localStorage.getItem("cart");
     if (storedCart) {
@@ -64,6 +73,48 @@ export default function ShopppingCart() {
     const tax = subtotal * 0.1;
     return subtotal + shipping + tax;
   };
+
+  const showAlert = (
+    type: "success" | "error" | "wishlist-add" | "wishlist-remove",
+    message: string
+  ) => {
+    setAlertData({ show: true, type, message });
+    setTimeout(
+      () => setAlertData({ show: false, type: "success", message: "" }),
+      3000
+    ); 
+  };
+
+  const handleCheckout = async () => {
+    const response = await fetch("/api/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ products: cart }),
+    });
+  
+    const data = await response.json();
+    console.log("Checkout Session Response:", data); 
+  
+    if (!data.sessionId) {
+      console.error("Error: No sessionId received");
+      return;
+    }
+  
+    const stripeUI = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "");
+    if (!stripeUI) {
+      console.error("Stripe.js failed to load");
+      return;
+    }
+  
+    const { error } = await stripeUI.redirectToCheckout({
+      sessionId: data.sessionId,
+    });
+  
+    if (error) console.error("Stripe Checkout Error:", error.message);
+    };
+
 
   return (
     <div>
@@ -121,11 +172,26 @@ export default function ShopppingCart() {
                             </div>
                           </div>
                           <button
-                            onClick={() => removeFromCart(item._id)}
+                            onClick={() => {
+                              removeFromCart(item._id);
+                              showAlert("error", "Removed from Cart!");
+                            }}
                             className="bg-gray-100 mt-4 h-10 w-18 p-1 pl-5 pr-5 rounded-lg text-[#FB2E86]  hover:bg-gray-200 md:mt-0 ml-4"
                           >
                             Remove
                           </button>
+                          <Alert
+                            show={alertData.show}
+                            type={alertData.type}
+                            message={alertData.message}
+                            onClose={() =>
+                              setAlertData({
+                                show: false,
+                                type: "success",
+                                message: "",
+                              })
+                            }
+                          />
                         </div>
                       </div>
                     ))}
@@ -175,16 +241,31 @@ export default function ShopppingCart() {
                                   handleQuantityChange(
                                     item._id,
                                     Number(e.target.value)
+                                    
                                   )
                                 }
                               />
-                            </td>
+                            </td> <Alert
+                                show={alertData.show}
+                                type={alertData.type}
+                                message={alertData.message}
+                                onClose={() =>
+                                  setAlertData({
+                                    show: false,
+                                    type: "success",
+                                    message: "",
+                                  })
+                                }
+                              />
                             <td className="py-4">
                               ${item.price * item.quantity}
                             </td>
                             <td>
                               <button
-                                onClick={() => removeFromCart(item._id)}
+                                onClick={() => {
+                                  removeFromCart(item._id);
+                                  showAlert("error", "Removed from Cart!");
+                                }}
                                 className=""
                               >
                                 <svg
@@ -198,6 +279,18 @@ export default function ShopppingCart() {
                                   <path d="M 25 8 C 15.611 8 8 15.611 8 25 C 8 34.389 15.611 42 25 42 C 34.389 42 42 34.389 42 25 C 42 15.611 34.389 8 25 8 z M 25 9 C 33.837 9 41 16.163 41 25 C 41 33.837 33.837 41 25 41 C 16.163 41 9 33.837 9 25 C 9 16.163 16.163 9 25 9 z M 18.990234 18.490234 C 18.862234 18.490234 18.734219 18.539219 18.636719 18.636719 C 18.441719 18.831719 18.441719 19.14875 18.636719 19.34375 L 24.292969 25 L 18.636719 30.65625 C 18.441719 30.85125 18.441719 31.168281 18.636719 31.363281 C 18.831719 31.558281 19.14875 31.558281 19.34375 31.363281 L 25 25.707031 L 30.65625 31.363281 C 30.85125 31.558281 31.168281 31.558281 31.363281 31.363281 C 31.558281 31.168281 31.558281 30.85125 31.363281 30.65625 L 25.707031 25 L 31.363281 19.34375 C 31.558281 19.14875 31.558281 18.831719 31.363281 18.636719 C 31.168281 18.441719 30.85125 18.441719 30.65625 18.636719 L 25 24.292969 L 19.34375 18.636719 C 19.24625 18.539219 19.118234 18.490234 18.990234 18.490234 z"></path>
                                 </svg>
                               </button>
+                              <Alert
+                                show={alertData.show}
+                                type={alertData.type}
+                                message={alertData.message}
+                                onClose={() =>
+                                  setAlertData({
+                                    show: false,
+                                    type: "success",
+                                    message: "",
+                                  })
+                                }
+                              />
                             </td>
                           </tr>
                         ))}
@@ -206,11 +299,15 @@ export default function ShopppingCart() {
                   </div>
 
                   <div className="flex justify-between gap-2 sm:gap-0 mt-6">
+                   <Link href={"/gridDefault"}>
                     <button className="bg-[#FB2E86] hover:bg-[#c92b70] h-[39px] w-[134px] rounded-[2px] text-white">
                       Update Cart
                     </button>
+                    </Link>
                     <button
-                      onClick={() => clearCart()}
+                      onClick={() => {
+                        clearCart();
+                      }}
                       className="bg-[#FB2E86] hover:bg-[#c92b70] h-[39px] w-[134px] rounded-[2px] text-white"
                     >
                       Clear Cart
@@ -243,11 +340,9 @@ export default function ShopppingCart() {
                 <p className="text-sm text-[#8A91AB] my-4">
                   Shipping & taxes calculated at checkout.
                 </p>
-                <Link href={"/hecto-demo"}>
-                  <button className="bg-[#19D16F] hover:bg-[#2aac67] text-white w-full sm:w-[312px] rounded-[3px] h-[40px] py-2">
+                  <button onClick={handleCheckout} className="bg-[#19D16F] hover:bg-[#2aac67] text-white w-full sm:w-[312px] rounded-[3px] h-[40px] py-2">
                     Proceed To Checkout
                   </button>
-                </Link>
               </div>
 
               <h2 className="font-bold text-lg mt-6 lg:text-center lg:mr-7 mb-4">

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Josefin_Sans } from "@next/font/google";
+import { WishlistProvider } from "./context/wishList-Context";
+import { ClerkProvider,  SignedOut, } from "@clerk/nextjs";
+
 
 const josefinSans = Josefin_Sans({
   subsets: ["latin"], 
@@ -19,12 +22,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${josefinSans.className} antialiased`}
-      >
-        {children}
-
-      </body>
-    </html>
+          <body>
+          <ClerkProvider >
+            <SignedOut>
+            </SignedOut>
+            <WishlistProvider>
+            {children}
+            </WishlistProvider>
+      </ClerkProvider>
+          </body>
+        </html>
   );
 }

@@ -2,7 +2,7 @@ import Image from "next/image";
 import image1 from "../../../public/Vector 16.png";
 import image2 from "../../../public/Ellipse 70.png";
 import image3 from "../../../public/Vector 15 (1).png";
-import Section8 from "../../section8/page";
+import Section8 from "../../(heroSection)/section8/page";
 
 
 export default function OrderCompleted() {

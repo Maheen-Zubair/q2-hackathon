@@ -10,8 +10,8 @@ dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
 const client = createClient({
   projectId: "2c6j73lh",
-  dataset:"production",
-  token:"skh6ZZwPFp1cGIPGWhbxjGksscUzs6tBHuPh0T6ompKWLN22UaNFhZbZ8vD5TkmHnjlNETnl8lzQOZ29gj1CJ88c6CJ3wa3EiRpEMYt61Ptn0i6jYuqh7jKQ1YN6xs4skgZtGVfU3L98nl4pBKhJarVfvfZCApHQvlk2LwbYMvP9nCWJg3hH",
+  dataset: "production",
+  token: "sknMf9PXHOFLxXYkMTPd491teWToljdTEyCRyiRXMzaSm2y563XiLIfyCimUqHIPqZ4iI3ZOHsqQ9LkqVQ2UpzQiMjvK3hsDMnAbfCg908sgO1e1ywwwlnrFtK1ckn6jvDVNN2XYJWjQgRCLkdQgbbbjUaNXEb9WBZ7Ad7mnyfNBfUz2rQns",
   apiVersion: '2025-01-15',
   useCdn: false,
 });

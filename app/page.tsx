@@ -1,22 +1,27 @@
-import Section1 from "./section1/page";
-import Section2 from "./section2/page";
-import Section3 from "./section3/page";
-import Section4 from "./section4/page";
-import Section5 from "./section5/page";
-import Section5b from "./section5b/page";
-import Section6 from "./section6/page";
-import Section7 from "./section7/page";
-import Section8 from "./section8/page";
-import Section9 from "./section9/page";
-import Section from "./section/page";
+import Section1 from "./(heroSection)/section1/page";
+import Section2 from "./(heroSection)/section2/page";
+import Section3 from "./(heroSection)/section3/page";
+import Section4 from "./(heroSection)/section4/page";
+import Section5 from "./(heroSection)/section5/page";
+import Section5b from "./(heroSection)/section5b/page";
+import Section6 from "./(heroSection)/section6/page";
+import Section7 from "./(heroSection)/section7/page";
+import Section8 from "./(heroSection)/section8/page";
+import Section9 from "./(heroSection)/section9/page";
+import Section from "./(heroSection)/section/page";
 import Header from "./components/header";
 import Footer from "./components/footer";
+import SocialShare from "./funtionalities/social-sharing/page";
 export default function Home() {
   return (
     <div>
+            <div  className="edit">
+
       <Header />
+      </div>
       {/* -----------main slide:"New Furniture Collection Trends in 2020"-------- */}
       <Section1 />  
+      <div  className="edit">
       <Section2 />
 
       {/* -------Leatest Products , What Shopex Offer!-------- */}
@@ -25,7 +30,7 @@ export default function Home() {
       {/* ---------Unique Features Of leatest & Trending Poducts------ */}
       <Section3 />
  
- {/* ------- Trending Products ------- */}
+     {/* ------- Trending Products ------- */}
       <Section5b />
       <Section />
 
@@ -44,6 +49,7 @@ export default function Home() {
       {/* -----Leatest Blog------- */}
       <Section9 /> 
      <Footer />
+     </div>
     </div>
   );
 }

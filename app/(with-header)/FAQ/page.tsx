@@ -1,4 +1,4 @@
-import Section8 from "../../section8/page";
+import Section8 from "../../(heroSection)/section8/page";
 export default function FAQ() {
   return (
     <div >

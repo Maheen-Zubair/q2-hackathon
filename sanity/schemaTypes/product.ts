@@ -57,19 +57,6 @@ export default {
       validation: (Rule: any) => Rule.min(0).error('Stock level must be a positive number.'),
     },
     {
-      name: "reviews",
-      type: "array",
-      of: [
-        {
-          type: "object",
-          fields: [
-            { name: "username", type: "string" , title: "UserName" },
-            { name: "reviewText", type: "text", title: "Review Text"},
-          ],
-        },
-      ],
-    },
-    {
       name: 'category',
       type: 'string',
       title: 'Category',
@@ -100,6 +87,8 @@ export default {
 
         ]
       }
-    }
+    },
+
   ],
+  
 };

@@ -13,6 +13,8 @@ import {
   SelectValue,
 } from "../../components/ui/select";
 import { client } from "@/sanity/lib/client";
+import { SignInButton } from "@clerk/nextjs";
+import { SignedIn, UserButton } from "@clerk/clerk-react";
 
 interface Product {
   _id: number;
@@ -59,10 +61,13 @@ export default function Header() {
   return (
     <div>
       {/* -----------Header 1------------ */}
-      <div className="mainContainer h-[35px] xmd:h-[44px] w-screen bg-[#7E33E0] text-white flex justify-center items-center">
+      <div className="mainContainer h-[35px] xmd:h-[44px] w-full bg-[#7E33E0] text-white flex justify-center items-center">
         <div className="subContainer xxmd:w-[70%] w-[90%]  flex justify-between">
           <div className="part1 flex  gap-1 xxmd:gap-3 s:gap-8">
             <div className="subPart1 flex items-center justify-center gap-1 s:gap-3">
+                 <SignedIn>
+              <UserButton/>
+            </SignedIn>    
               <svg
                 width="14"
                 height="12"
@@ -81,7 +86,7 @@ export default function Header() {
               </div>
             </div>
 
-            <div className="SubPart2 flex items-center justify-center  gap-1 s:gap-3">
+            {/* <div className="SubPart2 flex items-center justify-center  gap-1 s:gap-3">
               <svg
                 width="16"
                 height="16"
@@ -103,7 +108,7 @@ export default function Header() {
               <div className="text2    text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-base leading-none">
                 (12345)67890
               </div>
-            </div>
+            </div> */}
           </div>
           <div className="part2 flex gap-1  s:gap-3">
             <select
@@ -127,7 +132,7 @@ export default function Header() {
                 Chinese
               </option>
             </select>
-            <select
+            {/* <select
               name="currencies"
               id="currencies"
               className="bg-transparent   text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-base "
@@ -147,13 +152,13 @@ export default function Header() {
               <option value="aud" className="bg-[#7E33E0] ">
                 AUD
               </option>
-            </select>
-            <Link href={"/login"}>
-              <div className="loginIcon flex justify-center items-center ">
-                <div className="text    text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-baseleading-none">
-                  Login
-                </div>
-                <svg
+            </select> */}
+                    <div className="loginIcon flex justify-center items-center s:gap-1">
+              <div className="text    text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-base leading-none">
+                <Link href={"/login"}>                 <SignInButton />
+                </Link>
+              </div>
+              <svg
                   width="16"
                   height="16"
                   viewBox="0 0 16 16"
@@ -170,12 +175,11 @@ export default function Header() {
                     fill="white"
                   />
                 </svg>
-              </div>
-            </Link>
+</div>
 
             <div className="wishlistIcon flex justify-center items-center s:gap-1">
               <div className="text    text-[5px]  s:text-[7px] md:text-[9px] lg:text-sm clg:text-base leading-none">
-                <Link href={"/notFound"}> Wishlist</Link>
+                <Link href={"/wishList"}> Wishlist</Link>
               </div>
               <svg
                 width="16"
@@ -223,6 +227,8 @@ export default function Header() {
                   />
                 </svg>
               </Link>
+
+                
             </div>
           </div>
         </div>
@@ -251,7 +257,7 @@ export default function Header() {
             </svg>
             {isVisible && (
               <div className="absolute z-10 top-0 left-0 flex flex-col h-screen bg-gray-200 text-white xs:w-1/2 sm:w-1/4 shadow-black shadow-xl ">
-                <div className="bg-[#6529b3] flex items-center justify-between overflow-y-hidden">
+                <div className="bg-[#6529b3] flex items-center justify-between ">
                   <h1 className=" p-4  text-sm xmd:text-lg xxmd:text-md  s:text-2xl font-bold md:pr-3">
                     Heckto
                   </h1>
@@ -271,7 +277,7 @@ export default function Header() {
                     />
                   </svg>
                 </div>
-                <div className="bg-white h-screen p-4 shadow-lg">
+                <div className="bg-white h-full p-4 shadow-lg">
                   {/* Navigation Heading */}
                   <div className="flex justify-center">
                     <h1 className="mt-2 font-bold text-[#101750] text-md xxmd:text-xl">
@@ -289,14 +295,7 @@ export default function Header() {
                         Home
                       </Link>
                     </li>
-                    <li>
-                      <Link
-                        href={"/"}
-                        className="h-8 pl-4 block w-full hover:bg-gray-200"
-                      >
-                        Pages
-                      </Link>
-                    </li>
+                    
                     <li>
                       <Link
                         href={"/gridDefault"}
@@ -340,25 +339,15 @@ export default function Header() {
                   </div>
 
                   <div className="mt-3 space-y-1">
-                    <Select>
-                      <SelectTrigger className="sm:h-9 text-gray-600 font-semibold text-sm xxmd:text-md border-none hover:bg-gray-200 px-4 rounded ">
-                        <SelectValue placeholder="Living Room Chairs" />
-                      </SelectTrigger>
-                      <SelectContent className=" bg-white">
-                        <SelectItem value="recliners">Recliners</SelectItem>
-                        <SelectItem value="armchairs">Armchairs</SelectItem>
-                        <SelectItem value="rocking">Rocking Chairs</SelectItem>
-                      </SelectContent>
-                    </Select>
-
+                  
                     {/* Sofas */}
                     <Select>
                       <SelectTrigger className="sm:h-9 text-gray-600 font-semibold text-sm xxmd:text-md border-none hover:bg-gray-200 px-4 rounded">
-                        <SelectValue placeholder="Sofas" />
+                        <SelectValue placeholder=" Sectional Sofas" />
                       </SelectTrigger>
                       <SelectContent className=" bg-white">
                         <SelectItem value="sectional">
-                          Sectional Sofas
+                          Modern Sofas
                         </SelectItem>
                         <SelectItem value="sleeper" className="">
                           Sleeper Sofas
@@ -367,13 +356,13 @@ export default function Header() {
                       </SelectContent>
                     </Select>
 
-                    {/* Dining Chairs */}
+                    {/* Dining Chairs */} 
                     <Select>
                       <SelectTrigger className="sm:h-9 text-gray-600 font-semibold text-sm xxmd:text-md border-none  hover:bg-gray-200 px-4 rounded">
                         <SelectValue placeholder="Dining Chairs" />
                       </SelectTrigger>
                       <SelectContent className=" bg-white">
-                        <SelectItem value="wooden">Wooden Chairs</SelectItem>
+                        <SelectItem value="wooden">wooden</SelectItem>
                         <SelectItem value="upholstered">
                           Upholstered Chairs
                         </SelectItem>
@@ -381,14 +370,14 @@ export default function Header() {
                       </SelectContent>
                     </Select>
 
-                    {/* Office Chairs */}
+                   {/* Office Chairs */}
                     <Select>
                       <SelectTrigger className="sm:h-9 text-gray-600 font-semibold text-sm xxmd:text-md border-none hover:bg-gray-200 px-4 rounded">
-                        <SelectValue placeholder="Office Chairs" />
+                        <SelectValue placeholder="Wooden Chairs" />
                       </SelectTrigger>
                       <SelectContent className=" bg-white">
                         <SelectItem value="ergonomic">
-                          Ergonomic Chairs
+                          Wooden Chairs
                         </SelectItem>
                         <SelectItem value="executive">
                           Executive Chairs
@@ -453,7 +442,6 @@ export default function Header() {
 
           {/* Options */}
           <div className="options hidden lg:flex elg:flex text-[#0D0E43] elg:w-auto  font-md h-[24px] gap-4 clg:gap-[20px]  items-center">
-            <div className=""></div>
             <select
               name="Pages"
               id="Pages"
@@ -510,7 +498,7 @@ export default function Header() {
               type="text"
               placeholder="Search..."
               onChange={(e) => setQuery(e.target.value)}
-              className="relative h-6 w-20 sm:h-9 pl-2 xxmd:w-24 xmd:w-28 md:w-64 s:w-40 text-gray-800 border-[#E7E6EF] border-2 border-r-0 placeholder:text-xs focus:ring-2 focus:ring-[#FB2E86] focus:outline-none"
+              className=" relative  h-6 w-20 sm:h-9 pl-2 xxmd:w-24 xmd:w-28 md:w-64 s:w-40 text-gray-800 border-[#E7E6EF] border-2 border-r-0 placeholder:text-xs focus:ring-2 focus:ring-[#FB2E86] focus:outline-none"
             />
             {loading ? (
               <div className="absolute top-[100px] right-[95px] text-gray-500 mt-4">
@@ -518,7 +506,7 @@ export default function Header() {
               </div>
             ) : (
               query.trim() && (
-                <ul className="absolute z-50  top-[100px] right: md:right-[95px] mt-4 w-[280px] max-w-md">
+                <ul className="absolute z-50 mt-4 w-[280px] top-[100px]  max-w-[280px] right-16  sm:w-[90%]">
                   {data.length > 0 ? (
                     data.map((item: Product, index) => (
                       <li

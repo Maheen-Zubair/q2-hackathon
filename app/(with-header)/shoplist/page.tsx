@@ -2,7 +2,7 @@ import Image from "next/image";
 import starfilled from "../../../public/ant-design_star-filled.png";
 import starnotfilled from "../../../public/ant-design_star-filled (1).png";
 import logos from "../../../public/Group 35.png";
-import Section8 from "../../section8/page";
+import Section8 from "../../(heroSection)/section8/page";
 interface ProductInterface {
   name: string;
   image: string;
@@ -10,7 +10,7 @@ interface ProductInterface {
 export default function ShopList() {
   const productData: ProductInterface[] = [
     { name: "Accumsan tincidunt", image: "/Rectangle 32.png" },
-    { name: "In nulla", image: "/no.png" },
+    { name: "In nulla", image: "/Rectangle 32 (1).png" },
     { name: "Vel sem", image: "/Rectangle 32 (2).png" },
     { name: "Porttitor cum", image: "/Rectangle 32 (3).png" },
     { name: "Nunc in", image: "/Rectangle 32 (4).png" },

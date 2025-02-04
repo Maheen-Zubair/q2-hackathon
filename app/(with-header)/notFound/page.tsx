@@ -1,6 +1,6 @@
 import Image from "next/image";
 import notFound from "../../../public/notFound.png";
-import Section8 from "../../section8/page";
+import Section8 from "../../(heroSection)/section8/page";
 export default function NotFound() {
   return (
     <div>

@@ -33,7 +33,7 @@ export default function Footer() {
     console.log(values);
   }
   return (
-    <div className="main relative flex lg:flex-row flex-col justify-center items-center bg-[#EEEFFB] pt-14 pb-14 w-screen text-[#8A8FB9]">
+    <div className="main relative flex lg:flex-row flex-col justify-center items-center bg-[#EEEFFB] pt-14 pb-14 w-full text-[#8A8FB9]">
       <div className="sub flex lg:flex-row flex-col justify-center items-center lg:h-[326px] w-3/4  gap-10 ">
         <div className="box1 w-full lg:w-[30%]  lg:h-[326px]  ">
           <div className="part1 flex gap-4 flex-col ">

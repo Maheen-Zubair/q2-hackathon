@@ -1,5 +1,5 @@
 'use client'
-import Section8 from "../../section8/page";
+import Section8 from "../../(heroSection)/section8/page";
 import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -93,35 +93,7 @@ export default function Login() {
         </Button>
       </form>
     </Form>
-        {/* <form> */}
-          {/* <div className="mb-4">
-            <input
-              type="email"
-              id="email"
-              className="w-full px-4  mt-2 py-2 border border-gray-300 rounded-[2px] focus:outline-none focus:ring-2 focus:ring-pink-400"
-              placeholder="Enter your email"
-            />
-          </div> */}
-          {/* <div className="mb-4">
-            <input
-              type="password"
-              id="password"
-              className="w-full mt-2 px-4 py-2 border border-gray-300 rounded-[2px] focus:outline-none focus:ring-2 focus:ring-pink-400"
-              placeholder="Enter your password"
-            />
-          </div> */}
-          {/* <div className="text-left mb-4">
-            <Link href={"/"} className="text-[#9096B2] text-sm hover:underline">
-              Forgot your password?
-            </Link>
-          </div> */}
-          {/* <button
-            type="submit"
-            className="w-full bg-[#FB2E86] text-white font-semibold py-2 px-4 rounded-[2px] hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-400"
-          >
-            Sign In
-          </button>
-        </form> */}
+      
         <p className="text-center text-[#9096B2] mt-6">
           Don’t have an account?{" "}
           <Link

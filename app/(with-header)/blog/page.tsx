@@ -4,7 +4,7 @@ import image2 from "../../../public/Vector (1).png";
 import search from "/public/search.png";
 import image3 from "../../../public/Group 225.png";
 import logo from "../../../public/Group 213.png";
-import Section8 from "../../section8/page";
+import Section8 from "../../(heroSection)/section8/page";
 interface Product {
   name: string;
   image: string;

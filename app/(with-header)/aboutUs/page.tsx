@@ -7,6 +7,7 @@ import logo3 from "../../../public/premium-quality 1.png";
 import logo4 from "../../../public/24-hours-support 1.png";
 import slide from "../../../public/Group 89.png";
 import picture from "../../../public/Group 200.png";
+import Link from "next/link";
 
 export default function AboutUs() {
   return (
@@ -38,9 +39,11 @@ export default function AboutUs() {
                 tristique amet erat vitae eget dolor lobortis. Accumsan faucibus
                 vitae lobortis quis bibendum quam.
               </p>
+              <Link href={"/contact"}>
               <button className="h-[44px] w-[145px] bg-[#FB2E86] rounded-[3px] hover:bg-pink-600 transition duration-300 text-white text-[18px] mt-[50px] ">
                 Contact Us
               </button>
+              </Link>
             </div>
           </div>
           {/* ---------------Our Features----------- */}
