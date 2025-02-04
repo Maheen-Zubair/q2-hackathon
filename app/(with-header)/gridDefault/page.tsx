@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
 import Section8 from "../../(heroSection)/section8/page";
 import Link from "next/link";
-import LikeButton from "@/app/funtionalities/likeButton/likeButton";
 import SmallLikeButton from "@/app/funtionalities/likeButton/smallLikeButton";
 import addToCart from "@/app/funtionalities/cart/addToCart";
 import Alert from "@/app/funtionalities/alerts/added-product";

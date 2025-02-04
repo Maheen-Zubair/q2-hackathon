@@ -87,7 +87,7 @@ export default function OrderCompleted() {
             </h1>
           </div>
           <p className="text-[16px] text-[#8D92A7] text-center mb-6">
-            We're sorry, but your order could not be processed and has been
+            We&apos;re sorry, but your order could not be processed and has been
             cancelled. If you have any questions or need assistance, please
             contact our support team.
           </p>
