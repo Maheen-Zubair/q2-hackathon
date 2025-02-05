@@ -5,6 +5,6 @@ export type Product = {
   price: number;
   imageURL: string;
   quantity: number;
-  discountPercentage?: number; // made optional
-  category?: string;          // made optional
+  discountPercentage?: number; 
+  category?: string;          
 };
