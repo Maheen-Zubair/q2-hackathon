@@ -111,10 +111,7 @@ export default function Header() {
          
             <div className="loginIcon flex justify-center items-center s:gap-1">
               <div className="text    text-[9px] lg:text-sm clg:text-base leading-none">
-                <Link href={"/login"}>
-                  {" "}
                   <SignInButton />
-                </Link>
               </div>
               <svg
                 width="16"

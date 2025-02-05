@@ -4,7 +4,7 @@ import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 // Apna Clerk Sign-Up URL yahan replace karein
 const CLERK_SIGN_UP_URL = "https://modest-leech-95.accounts.dev/sign-in"; 
 
-const isCartRoute = createRouteMatcher(["/shoppingCart"]);
+const isCartRoute = createRouteMatcher([""]);
 // const isAdminRoute = createRouteMatcher(["/admin-dashboard"]);
 
 export default clerkMiddleware(async (auth, req) => {
@@ -25,7 +25,6 @@ export default clerkMiddleware(async (auth, req) => {
 
 export const config = {
   matcher: [
-    "/shoppingCart",
     "/((?!.*\\..*|_next).*)", 
   ],
 };

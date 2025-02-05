@@ -64,7 +64,7 @@ export default function Section2() {
   return (
     <div>
       <div className="flex flex-col  pt-24 pb-24 items-center  gap-[10px] md:gap-[20px]">
-        <h1 className="font-bold text-[#151875] text-[20px] sm:[30px] md:text-[38px] lg:text-[42px] ">
+        <h1 className="font-bold text-[#151875] text-[30px] md:text-[38px] lg:text-[42px] ">
           Featured Products
         </h1>
         <div className="sub grid eelg:grid-cols-4 gap-y-9 md:grid-cols-3 sm:grid-cols-2 sm:gap-[30px]  justify-center items-center  w-[60p%] lg:w-[75%] ">
