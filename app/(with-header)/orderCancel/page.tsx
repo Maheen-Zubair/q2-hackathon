@@ -2,6 +2,7 @@ import Image from "next/image";
 import image1 from "../../../public/Vector 16.png";
 import image2 from "../../../public/Ellipse 70.png";
 import Section8 from "../../(heroSection)/section8/page";
+import Link from "next/link";
 
 export default function OrderCompleted() {
   return (
@@ -82,18 +83,20 @@ export default function OrderCompleted() {
               </g>
             </svg>
 
-            <h1 className="text-[36px] text-[#101750] font-bold">
-              Your Order Has Been Cancelled!
+            <h1 className="text-[24px] lg:text-[36px] text-black font-bold">
+             Order Has Been Cancelled!
             </h1>
           </div>
-          <p className="text-[16px] text-[#8D92A7] text-center mb-6">
+          <p className="text-[13px] mx-2 lg:text-[16px] text-[#8D92A7] text-center mb-6">
             We&apos;re sorry, but your order could not be processed and has been
             cancelled. If you have any questions or need assistance, please
             contact our support team.
           </p>
-          <button className="h-[59px] w-[208px] text-white  bg-[#FB2E86]  rounded-[3px]  hover:bg-pink-700 transition">
-            Continue Shopping
-          </button>
+          <Link href={"/gridDefault"}>
+          <button className="lg:h-[59px] text-center flex justify-center items-center lg:w-[208px] h-[40px] w-[180px] text-white  bg-[#FB2E86] hover:bg-pink-700 rounded-[3px] transition">
+             <div className="ml-3"> Continue Shopping</div>
+            </button>
+          </Link>
         </div>
       </div>
       <Section8 />

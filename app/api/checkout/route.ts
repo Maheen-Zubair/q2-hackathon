@@ -33,8 +33,8 @@ export async function POST(req: Request) {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",
-      success_url: "https://final-marketplace-40t3f0gzb-maheen-zubairs-projects.vercel.app/orderCompleted",
-      cancel_url: "https://final-marketplace-40t3f0gzb-maheen-zubairs-projects.vercel.app/orderCancel",
+      success_url: "https://final-marketplace-bkeshc1g2-maheen-zubairs-projects.vercel.app/orderCompleted",
+      cancel_url: "https://final-marketplace-bkeshc1g2-maheen-zubairs-projects.vercel.app/orderCancel",
       line_items: lineItems,
     });
 

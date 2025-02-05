@@ -446,7 +446,7 @@ export default function Header() {
               type="text"
               placeholder="Search..."
               onChange={(e) => setQuery(e.target.value)}
-              className=" relative  h-6 w-20 sm:h-9 pl-2 xxmd:w-24 xmd:w-28 md:w-64 s:w-40 text-gray-800 border-[#E7E6EF] border-2 border-r-0 placeholder:text-xs focus:ring-2 focus:ring-[#FB2E86] focus:outline-none"
+              className=" relative  h-6 w-20 sm:h-9 pl-2 xxmd:w-24 xmd:w-28 md:w-64 s:w-40 text-gray-800 border-[#E7E6EF] border-2 border-r-0 placeholder:text-xs focus:outline-none"
             />
             {loading ? (
               <div className="absolute top-[100px] right-[95px] text-gray-500 mt-4">
